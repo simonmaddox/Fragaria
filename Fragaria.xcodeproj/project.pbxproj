@@ -135,6 +135,8 @@
 		019B02EF1C1F4FE20026548F /* MGSFragariaRowColumnFunctionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 019B02EE1C1F4FE20026548F /* MGSFragariaRowColumnFunctionsTests.m */; };
 		019B80191A9E77330007D234 /* MGSFragariaTextViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 019B80181A9E77330007D234 /* MGSFragariaTextViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		019F56D51A9D3511009F9DCD /* SMLTextView+MGSDragging.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C145C21A85E1FD00DDE90A /* SMLTextView+MGSDragging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01A0EC4E1E6C755700818624 /* NSTextStorage+Fragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = 014E7DA71C1C8D430093ACA6 /* NSTextStorage+Fragaria.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01A0EC4F1E6C761400818624 /* MGSMutableSubstring.h in Headers */ = {isa = PBXBuildFile; fileRef = 01FBC7E91B0679520008EAF8 /* MGSMutableSubstring.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01AC7E721AA341AA00DF7620 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01AC7E711AA341AA00DF7620 /* Images.xcassets */; };
 		01B50A801B07AD8C00C9A856 /* NSString+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B50A7E1B07AD8C00C9A856 /* NSString+Fragaria.m */; };
 		01BB1BF41A79AA15006C0056 /* MGSSimpleBreakpointDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BB1BF21A79AA15006C0056 /* MGSSimpleBreakpointDelegate.m */; };
@@ -1330,8 +1332,10 @@
 				D0C146751A871A0B00DDE90A /* MGSFragariaView.h in Headers */,
 				010F6D2F1AFEA19C0054F3D2 /* MGSUserDefaultsControllerProtocol.h in Headers */,
 				E373BF131718A64700D71602 /* SMLAutoCompleteDelegate.h in Headers */,
+				01A0EC4F1E6C761400818624 /* MGSMutableSubstring.h in Headers */,
 				AB8387AA171B4505004408F4 /* SMLSyntaxColouringDelegate.h in Headers */,
 				D071884F1AB54CCA0073493A /* MGSPrefsViewController.h in Headers */,
+				01A0EC4E1E6C755700818624 /* NSTextStorage+Fragaria.h in Headers */,
 				AB8387C5171D6115004408F4 /* SMLSyntaxDefinition.h in Headers */,
 				0191FA811A8829930099B50D /* SMLTextView+MGSTextActions.h in Headers */,
 			);

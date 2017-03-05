@@ -4,13 +4,11 @@
 //
 //  Created by Daniele Cattaneo on 12/12/15.
 //
-/// @cond PRIVATE
 
 #import <Cocoa/Cocoa.h>
 
 
-/** A private category of NSTextStorage, used for globally caching line
- *  numbers. */
+/** A category of NSTextStorage, used for globally caching line numbers. */
 
 @interface NSTextStorage (Fragaria)
 

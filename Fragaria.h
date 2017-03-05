@@ -22,6 +22,9 @@
 #import "SMLTextView+MGSDragging.h"
 #import "MGSSyntaxController.h"
 
+#import "NSTextStorage+Fragaria.h"
+#import "MGSMutableSubstring.h"
+
 #import "MGSUserDefaultsControllerProtocol.h"
 #import "MGSUserDefaultsController.h"
 #import "MGSHybridUserDefaultsController.h"

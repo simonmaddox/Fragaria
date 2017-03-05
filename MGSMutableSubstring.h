@@ -4,15 +4,13 @@
 //
 //  Created by Daniele Cattaneo on 15/05/15.
 //
-/// @cond PRIVATE
 
 #import <Foundation/Foundation.h>
 
 
 /** 
- *  MGSMutableSubstring is a mutable string which wraps a range of another
- *  mutable string. This is to simplify index calculation when multiple
- *  disjointed ranges of a string are to be edited in sequence. 
+ *  MGSMutableSubstring is a mutable string which is a view of a range of
+ *  another mutable string. It's very lightweight.
  *
  *  When MGSMutableSubstring is edited, the mutable string of which it is a
  *  substring is edited in the same way.
