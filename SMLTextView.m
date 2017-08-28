@@ -1458,5 +1458,11 @@ static unichar ClosingBraceForOpeningBrace(unichar c)
     [self display]; // To reflect the new values in the view
 }
 
+- (void) insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag
+{
+    if (flag) {
+        [super insertCompletion:word forPartialWordRange:charRange movement:movement isFinal:flag];        
+    }
+}
 
 @end
