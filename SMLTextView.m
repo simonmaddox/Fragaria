@@ -1460,6 +1460,10 @@ static unichar ClosingBraceForOpeningBrace(unichar c)
 
 - (void) insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag
 {
+    if (movement == NSRightTextMovement) {
+        return;
+    }
+    
     if (flag) {
         [super insertCompletion:word forPartialWordRange:charRange movement:movement isFinal:flag];        
     }
