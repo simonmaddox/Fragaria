@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MGSPrefsEditorPropertiesViewController">
@@ -31,7 +32,7 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="168"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Mdb-GN-6Ll">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdb-GN-6Ll">
                     <rect key="frame" x="18" y="141" width="464" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Editing" id="mb4-aB-2y2">
                         <font key="font" metaFont="system"/>
@@ -223,7 +224,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.showsIndividualErrors" id="L1j-Nm-3zC"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i9B-Jn-s8k">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9B-Jn-s8k">
                     <rect key="frame" x="308" y="10" width="40" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="mOQ-PK-hYA"/>
@@ -267,7 +268,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.highlightsCurrentLine" id="Nub-Q6-ldW"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kTZ-vB-uuT">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTZ-vB-uuT">
                     <rect key="frame" x="40" y="10" width="40" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="MUz-BB-UUf"/>
@@ -291,7 +292,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.pageGuideColumn" id="zE6-Eg-YJk"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="64O-Ve-mBa">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64O-Ve-mBa">
                     <rect key="frame" x="86" y="13" width="133" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="uDr-04-B6x"/>
@@ -339,7 +340,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.syntaxColoured" id="ypD-2D-51P"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-qP-Uc1">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-qP-Uc1">
                     <rect key="frame" x="354" y="13" width="148" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Line Height" id="LwL-PK-1Es">
                         <font key="font" metaFont="system"/>
@@ -400,11 +401,11 @@
             </constraints>
         </customView>
         <customView id="5nN-zl-ccv" userLabel="Auto Complete View">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="99"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="119"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hyh-4o-qfx">
-                    <rect key="frame" x="399" y="50" width="40" height="11"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyh-4o-qfx">
+                    <rect key="frame" x="399" y="70" width="40" height="11"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="(0.1-99)" id="O9w-5j-S99">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -425,7 +426,7 @@
                     </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="zp4-KL-GPt">
-                    <rect key="frame" x="38" y="48" width="309" height="18"/>
+                    <rect key="frame" x="38" y="68" width="309" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="dYy-zV-G88"/>
                     </constraints>
@@ -449,7 +450,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="JKN-Q8-Olx">
-                    <rect key="frame" x="38" y="28" width="164" height="18"/>
+                    <rect key="frame" x="38" y="48" width="164" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="7an-ZI-Rhq"/>
                     </constraints>
@@ -472,8 +473,8 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.autoCompleteWithKeywords" id="caJ-yP-LOP"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="soq-1p-DIJ">
-                    <rect key="frame" x="18" y="72" width="464" height="17"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soq-1p-DIJ">
+                    <rect key="frame" x="18" y="92" width="464" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Auto Complete" id="Ynu-Eh-LAy">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -481,7 +482,7 @@
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="kPH-cN-saE">
-                    <rect key="frame" x="38" y="8" width="146" height="18"/>
+                    <rect key="frame" x="38" y="28" width="146" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="GAj-XG-CVx"/>
                     </constraints>
@@ -504,8 +505,8 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.autoCompleteWithKeywords" id="ef9-JL-hV1"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qVG-TA-QQW">
-                    <rect key="frame" x="353" y="46" width="40" height="19"/>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVG-TA-QQW">
+                    <rect key="frame" x="353" y="66" width="40" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="nRX-DH-3c2"/>
                     </constraints>
@@ -536,7 +537,7 @@
                     </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="zdv-D4-Xw4">
-                    <rect key="frame" x="303" y="8" width="179" height="18"/>
+                    <rect key="frame" x="303" y="28" width="179" height="18"/>
                     <buttonCell key="cell" type="check" title="Auto-insert closing }" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="PiQ-EL-Ni2">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -556,26 +557,46 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.insertClosingBraceAutomatically" id="NhO-SM-9aH"/>
                     </connections>
                 </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="HNA-JX-FdT">
+                    <rect key="frame" x="38" y="8" width="249" height="18"/>
+                    <buttonCell key="cell" type="check" title="Use space to confirm autocompletion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8kn-cY-IB8">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.managedProperties.autoCompleteDisableSpaceEnter" id="8Q9-HQ-6F4"/>
+                        <binding destination="-2" name="fontBold" keyPath="self.managedGlobalProperties.autoCompleteDisableSpaceEnter" id="ttN-Bq-xOa"/>
+                        <binding destination="nB4-Iz-pOA" name="value" keyPath="selection.autoCompleteDisableSpaceEnter" id="Jgj-yO-RkK">
+                            <dictionary key="options">
+                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="JKN-Q8-Olx" firstAttribute="top" secondItem="zp4-KL-GPt" secondAttribute="bottom" priority="900" constant="6" symbolic="YES" id="1LL-9R-bV5"/>
                 <constraint firstItem="zp4-KL-GPt" firstAttribute="top" secondItem="soq-1p-DIJ" secondAttribute="bottom" priority="900" constant="8" symbolic="YES" id="1Si-JK-R5g"/>
+                <constraint firstItem="HNA-JX-FdT" firstAttribute="leading" secondItem="5nN-zl-ccv" secondAttribute="leading" constant="40" id="3al-i1-FLI"/>
                 <constraint firstItem="hyh-4o-qfx" firstAttribute="leading" secondItem="qVG-TA-QQW" secondAttribute="trailing" priority="900" constant="8" symbolic="YES" id="4yy-Lj-fTI"/>
                 <constraint firstItem="kPH-cN-saE" firstAttribute="top" secondItem="JKN-Q8-Olx" secondAttribute="bottom" priority="900" constant="6" symbolic="YES" id="5Nx-eL-67b"/>
                 <constraint firstItem="soq-1p-DIJ" firstAttribute="top" secondItem="5nN-zl-ccv" secondAttribute="top" priority="900" constant="10" id="8Ad-UK-ua7"/>
+                <constraint firstAttribute="bottom" secondItem="HNA-JX-FdT" secondAttribute="bottom" constant="10" id="AB8-o3-zGK"/>
                 <constraint firstItem="qVG-TA-QQW" firstAttribute="baseline" secondItem="zp4-KL-GPt" secondAttribute="baseline" priority="900" id="F5s-Ll-Tsj"/>
                 <constraint firstAttribute="trailing" secondItem="soq-1p-DIJ" secondAttribute="trailing" priority="900" constant="20" symbolic="YES" id="HJB-gD-rPM"/>
                 <constraint firstItem="zp4-KL-GPt" firstAttribute="leading" secondItem="5nN-zl-ccv" secondAttribute="leading" priority="900" constant="40" id="NWN-Ku-QwD"/>
                 <constraint firstItem="qVG-TA-QQW" firstAttribute="baseline" secondItem="hyh-4o-qfx" secondAttribute="baseline" priority="900" id="S8j-fl-lry"/>
                 <constraint firstItem="soq-1p-DIJ" firstAttribute="leading" secondItem="5nN-zl-ccv" secondAttribute="leading" priority="900" constant="20" symbolic="YES" id="SAa-GD-NjC"/>
+                <constraint firstItem="HNA-JX-FdT" firstAttribute="top" secondItem="kPH-cN-saE" secondAttribute="bottom" constant="6" id="WnL-UY-AqW"/>
                 <constraint firstAttribute="trailing" secondItem="zdv-D4-Xw4" secondAttribute="trailing" priority="800" constant="20" symbolic="YES" id="e73-IF-8iP"/>
                 <constraint firstItem="zdv-D4-Xw4" firstAttribute="leading" secondItem="5nN-zl-ccv" secondAttribute="leading" constant="305" id="f6y-Wj-nzj"/>
                 <constraint firstItem="zdv-D4-Xw4" firstAttribute="baseline" secondItem="kPH-cN-saE" secondAttribute="baseline" priority="900" id="foE-35-8ft"/>
                 <constraint firstItem="qVG-TA-QQW" firstAttribute="leading" secondItem="zp4-KL-GPt" secondAttribute="trailing" priority="900" constant="8" symbolic="YES" id="j8K-OU-wHT"/>
-                <constraint firstAttribute="bottom" secondItem="kPH-cN-saE" secondAttribute="bottom" priority="900" constant="10" id="pMm-If-2Nr"/>
                 <constraint firstItem="JKN-Q8-Olx" firstAttribute="leading" secondItem="kPH-cN-saE" secondAttribute="leading" priority="900" id="tvl-5K-7WK"/>
                 <constraint firstItem="zp4-KL-GPt" firstAttribute="leading" secondItem="JKN-Q8-Olx" secondAttribute="leading" priority="900" id="uC2-ee-8jW"/>
             </constraints>
+            <point key="canvasLocation" x="139" y="-20.5"/>
         </customView>
         <customView id="5Nw-IJ-f7x" userLabel="Indenting View">
             <rect key="frame" x="0.0" y="0.0" width="500" height="106"/>
@@ -602,7 +623,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.indentNewLinesAutomatically" id="RXu-WO-mEX"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="M9y-Ym-86h">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9y-Ym-86h">
                     <rect key="frame" x="18" y="79" width="61" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Indenting" id="ao0-tK-PBL">
                         <font key="font" metaFont="system"/>
@@ -673,7 +694,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.indentBracesAutomatically" id="Y9T-hd-DUR"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-Lk-rB9">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-Lk-rB9">
                     <rect key="frame" x="40" y="10" width="40" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="o7Z-ky-lji"/>
@@ -696,7 +717,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.indentWidth" id="eCS-i1-DqM"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f9G-4F-muL">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9G-4F-muL">
                     <rect key="frame" x="309" y="10" width="40" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="F3r-hI-KcO"/>
@@ -719,7 +740,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.tabWidth" id="IX2-MM-OkV"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-x8-chS">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-x8-chS">
                     <rect key="frame" x="86" y="13" width="80" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Indent width" id="Aft-Ii-B0A">
                         <font key="font" metaFont="system"/>
@@ -740,7 +761,7 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hlh-nz-Zl4">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlh-nz-Zl4">
                     <rect key="frame" x="355" y="13" width="127" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tab width" id="C36-WQ-ZI9">
                         <font key="font" metaFont="system"/>
@@ -803,7 +824,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.textFont" id="ru6-BL-rYT"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5gZ-ci-ZgZ">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gZ-ci-ZgZ">
                     <rect key="frame" x="18" y="68" width="61" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Text Font" id="n90-sX-z4w">
                         <font key="font" metaFont="system"/>
@@ -870,7 +891,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.showsGutter" id="egB-ln-fTG"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-90-HrU">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-90-HrU">
                     <rect key="frame" x="40" y="10" width="40" height="19"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="19" id="8G4-X2-60y"/>
@@ -902,7 +923,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.minimumGutterWidth" id="ZXV-cL-Pg4"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="TsA-rT-l4o">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsA-rT-l4o">
                     <rect key="frame" x="18" y="59" width="464" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Gutter" id="ddO-9E-JJc">
                         <font key="font" metaFont="system"/>
@@ -939,7 +960,7 @@
                         <binding destination="-2" name="enabled" keyPath="self.managedProperties.showsLineNumbers" id="yA5-p6-5dS"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Nn8-Cg-QG4">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn8-Cg-QG4">
                     <rect key="frame" x="86" y="13" width="230" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Minumum gutter width (25-99 pixels)" id="jYz-Is-P8W">
                         <font key="font" metaFont="system"/>
