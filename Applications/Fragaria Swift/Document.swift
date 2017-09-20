@@ -37,13 +37,13 @@ deinit {
 }
 
 
-override class func autosavesInPlace() -> Bool {
+override class var autosavesInPlace: Bool {
     return true
 }
 
     
-override var windowNibName: String? {
-    return "Document"
+override var windowNibName: NSNib.Name? {
+    return NSNib.Name(rawValue: "Document")
 }
 
     
