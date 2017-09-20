@@ -125,6 +125,12 @@
  *  the current syntax definition, in addition to the list provided by the
  *  autocomplete delegate. */
 @property BOOL autoCompleteWithKeywords;
+/** If set to YES, pressing the space bar will cancel autocompletion instead of
+ *  confirming it. */
+@property BOOL autoCompleteDisableSpaceEnter;
+/** If set to YES, autocomplete will not modify the text until the completion
+ *  confirmed. */
+@property BOOL autoCompleteDisablePreview;
 
 
 #pragma mark - Highlighting the current line

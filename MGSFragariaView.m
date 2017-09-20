@@ -313,6 +313,28 @@
 }
 
 
+- (void)setAutoCompleteDisablePreview:(BOOL)autoCompleteDisablePreview
+{
+    self.textView.autoCompleteDisablePreview = autoCompleteDisablePreview;
+}
+
+- (BOOL)autoCompleteDisablePreview
+{
+    return self.textView.autoCompleteDisablePreview;
+}
+
+
+- (void)setAutoCompleteDisableSpaceEnter:(BOOL)autoCompleteDisableSpaceEnter
+{
+    self.textView.autoCompleteDisableSpaceEnter = autoCompleteDisableSpaceEnter;
+}
+
+- (BOOL)autoCompleteDisableSpaceEnter
+{
+    return self.textView.autoCompleteDisableSpaceEnter;
+}
+
+
 #pragma mark - Highlighting the current line
 
 

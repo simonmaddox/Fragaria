@@ -23,6 +23,7 @@ NSString * const MGSFragariaDefaultsColoursOnlyUntilEndOfLine = @"coloursOnlyUnt
 NSString * const MGSFragariaDefaultsAutoCompleteDelay =        @"autoCompleteDelay";
 NSString * const MGSFragariaDefaultsAutoCompleteEnabled =      @"autoCompleteEnabled";
 NSString * const MGSFragariaDefaultsAutoCompleteWithKeywords = @"autoCompleteWithKeywords";
+NSString * const MGSFragariaDefaultsAutoCompleteDisableSpaceEnter = @"autoCompleteDisableSpaceEnter";
 
 // Highlighting the current line
 NSString * const MGSFragariaDefaultsCurrentLineHighlightColour = @"currentLineHighlightColour";
@@ -125,6 +126,7 @@ NSString * const MGSFragariaDefaultsColoursVariables =    @"coloursVariables";
  		 MGSFragariaDefaultsAutoCompleteDelay : @1.0f,
 		 MGSFragariaDefaultsAutoCompleteEnabled : @NO,
 		 MGSFragariaDefaultsAutoCompleteWithKeywords : @YES,
+         MGSFragariaDefaultsAutoCompleteDisableSpaceEnter : @NO,
 
 		 MGSFragariaDefaultsCurrentLineHighlightColour : ARCHIVED_COLOR(0.96f,0.96f,0.71f),
 		 MGSFragariaDefaultsHighlightsCurrentLine : @NO,
@@ -274,6 +276,7 @@ NSString * const MGSFragariaDefaultsColoursVariables =    @"coloursVariables";
 		MGSFragariaDefaultsAutoCompleteEnabled, MGSFragariaDefaultsAutoCompleteWithKeywords,
 		MGSFragariaDefaultsInsertClosingBraceAutomatically,
         MGSFragariaDefaultsInsertClosingParenthesisAutomatically,
+        MGSFragariaDefaultsAutoCompleteDisableSpaceEnter
 	]];
 }
 

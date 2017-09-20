@@ -347,7 +347,7 @@
 	[globalProperties addObjectsFromArray:@[
 											MGSFragariaDefaultsTextFont,
                                             MGSFragariaDefaultsGutterFont,
-											MGSFragariaDefaultsShowsGutter,
+											MGSFragariaDefaultsShowsGutter
 											]];
 
     /* And the groups' properties will simply be the remaining properties. */

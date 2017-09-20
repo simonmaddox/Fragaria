@@ -1287,6 +1287,18 @@ static unichar ClosingBraceForOpeningBrace(unichar c)
 }
 
 
+- (void)insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag
+{
+    if (self.autoCompleteDisableSpaceEnter && movement == NSRightTextMovement) {
+        return;
+    }
+    
+    if (!self.autoCompleteDisablePreview || flag) {
+        [super insertCompletion:word forPartialWordRange:charRange movement:movement isFinal:flag];        
+    }
+}
+
+
 #pragma mark - Line Wrap
 
 

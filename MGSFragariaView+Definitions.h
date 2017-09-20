@@ -40,6 +40,7 @@ extern NSString * const MGSFragariaDefaultsColoursOnlyUntilEndOfLine;           
 extern NSString * const MGSFragariaDefaultsAutoCompleteDelay;                     // double     autoCompleteDelay
 extern NSString * const MGSFragariaDefaultsAutoCompleteEnabled;                   // BOOL       autoCompleteEnabled
 extern NSString * const MGSFragariaDefaultsAutoCompleteWithKeywords;              // BOOL       autoCompleteWithKeywords
+extern NSString * const MGSFragariaDefaultsAutoCompleteDisableSpaceEnter;         // BOOL       autoCompleteDisableSpaceEnter
 
 // Highlighting the current line
 extern NSString * const MGSFragariaDefaultsCurrentLineHighlightColour;            // NSColor    currentLineHighlightColour
