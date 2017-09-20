@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0105F3E31A8681430045BDD3 /* SMLSyntaxColouring.m in Resources */ = {isa = PBXBuildFile; fileRef = 0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */; };
 		010870491C99E1C100C335DA /* actionscript.plist in Copy Syntax Definitions */ = {isa = PBXBuildFile; fileRef = 01086F9A1C99E16E00C335DA /* actionscript.plist */; };
 		0108704A1C99E1C100C335DA /* actionscript3.plist in Copy Syntax Definitions */ = {isa = PBXBuildFile; fileRef = 01086F9B1C99E16E00C335DA /* actionscript3.plist */; };
 		0108704B1C99E1C100C335DA /* active4d.plist in Copy Syntax Definitions */ = {isa = PBXBuildFile; fileRef = 01086F9C1C99E16E00C335DA /* active4d.plist */; };
@@ -157,6 +156,8 @@
 		01F0D7171C126E04000A08B6 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0718B801AB553A20073493A /* MASPreferencesWindow.xib */; };
 		01F336901C8C962100B5F395 /* NSSet+Fragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = 01F3368E1C8C962100B5F395 /* NSSet+Fragaria.h */; };
 		01F336911C8C962100B5F395 /* NSSet+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3368F1C8C962100B5F395 /* NSSet+Fragaria.m */; };
+		01F708BA1F72ACE000000F1E /* SMLSyntaxColouring.m in Resources */ = {isa = PBXBuildFile; fileRef = 0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */; };
+		01F708BB1F72AD0000000F1E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D034C8071A997FA8003D3A41 /* MainMenu.xib */; };
 		01FBC3831C1EADDF00837F04 /* MGSStringColumnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FBC3821C1EADDF00837F04 /* MGSStringColumnTests.m */; };
 		01FBC7EC1B0679520008EAF8 /* MGSMutableSubstring.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FBC7EA1B0679520008EAF8 /* MGSMutableSubstring.m */; };
 		01FC487F1C1C7EC600F4227E /* Fragaria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB69B62B118B745700903D1D /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -183,7 +184,6 @@
 		ABF28AF014C075D400ECAD48 /* NSScanner+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF28AEE14C075D400ECAD48 /* NSScanner+Fragaria.m */; };
 		D01A8CEC1ABE75E0003B2719 /* MGSPrefsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D01A8CEB1ABE75E0003B2719 /* MGSPrefsViewControllerTests.m */; };
 		D01F51721AAF1D35006A3A90 /* MGSFragariaViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F51701AAF1D35006A3A90 /* MGSFragariaViewTests.m */; };
-		D034C8081A997FA8003D3A41 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D034C8071A997FA8003D3A41 /* MainMenu.xib */; };
 		D034C80B1A99807F003D3A41 /* MainMenu-Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = D034C8091A99807F003D3A41 /* MainMenu-Document.xib */; };
 		D034C80C1A99807F003D3A41 /* MyDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = D034C80A1A99807F003D3A41 /* MyDocument.xib */; };
 		D06653CF1AC00CCD00ACE8B0 /* MGSBoolToColourTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D06653CD1AC00CCD00ACE8B0 /* MGSBoolToColourTransformer.m */; };
@@ -457,7 +457,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = SMLSyntaxColouring.m; sourceTree = "<group>"; };
+		0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = SMLSyntaxColouring.m; sourceTree = SOURCE_ROOT; };
 		01086F9A1C99E16E00C335DA /* actionscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actionscript.plist; sourceTree = "<group>"; };
 		01086F9B1C99E16E00C335DA /* actionscript3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actionscript3.plist; sourceTree = "<group>"; };
 		01086F9C1C99E16E00C335DA /* active4d.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = active4d.plist; sourceTree = "<group>"; };
@@ -569,8 +569,8 @@
 		017FD5861A7A992700B305FB /* MGSLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSLineNumberView.h; sourceTree = "<group>"; };
 		017FD5871A7A992700B305FB /* MGSLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSLineNumberView.m; sourceTree = "<group>"; };
 		018546701C1F1ABC00F1B79B /* MGSLineRangeForCharacterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSLineRangeForCharacterTests.m; sourceTree = "<group>"; };
-		018CFA0C1AE46B8F00334011 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Applications/Doc/main.m; sourceTree = "<group>"; };
-		018CFA0E1AE46B9800334011 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Applications/Simple/main.m; sourceTree = "<group>"; };
+		018CFA0C1AE46B8F00334011 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		018CFA0E1AE46B9800334011 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0191FA7C1A881F280099B50D /* MGSDragOperationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSDragOperationDelegate.h; sourceTree = "<group>"; };
 		0191FA7F1A8829930099B50D /* SMLTextView+MGSTextActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMLTextView+MGSTextActions.h"; sourceTree = "<group>"; };
 		0191FA801A8829930099B50D /* SMLTextView+MGSTextActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMLTextView+MGSTextActions.m"; sourceTree = "<group>"; };
@@ -579,16 +579,16 @@
 		01AC7E711AA341AA00DF7620 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		01B50A7D1B07AD8C00C9A856 /* NSString+Fragaria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Fragaria.h"; sourceTree = "<group>"; };
 		01B50A7E1B07AD8C00C9A856 /* NSString+Fragaria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Fragaria.m"; sourceTree = "<group>"; };
-		01BB1BF11A79AA15006C0056 /* MGSSimpleBreakpointDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSSimpleBreakpointDelegate.h; path = Applications/Simple/MGSSimpleBreakpointDelegate.h; sourceTree = "<group>"; };
-		01BB1BF21A79AA15006C0056 /* MGSSimpleBreakpointDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSSimpleBreakpointDelegate.m; path = Applications/Simple/MGSSimpleBreakpointDelegate.m; sourceTree = "<group>"; };
+		01BB1BF11A79AA15006C0056 /* MGSSimpleBreakpointDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSSimpleBreakpointDelegate.h; sourceTree = "<group>"; };
+		01BB1BF21A79AA15006C0056 /* MGSSimpleBreakpointDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSSimpleBreakpointDelegate.m; sourceTree = "<group>"; };
 		01BEF2A31AA7E761005F11B4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "en-GB"; path = "en-GB.lproj/SMLDetab.xib"; sourceTree = "<group>"; };
 		01BEF2A41AA7E761005F11B4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "en-GB"; path = "en-GB.lproj/SMLEntab.xib"; sourceTree = "<group>"; };
 		01BEF2A51AA7E761005F11B4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "en-GB"; path = "en-GB.lproj/SMLGoToLine.xib"; sourceTree = "<group>"; };
-		01D39A411B19DA690072F43F /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Applications/Doc/ApplicationDelegate.h; sourceTree = "<group>"; };
-		01D39A421B19DA690072F43F /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationDelegate.m; path = Applications/Doc/ApplicationDelegate.m; sourceTree = "<group>"; };
-		01D81ACF1AA7E37E006DF8B8 /* Features.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Features.xib; path = Applications/MGSFragariaView/Features.xib; sourceTree = "<group>"; };
-		01D81AD01AA7E37E006DF8B8 /* Lorem.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Lorem.html; path = Applications/MGSFragariaView/Lorem.html; sourceTree = "<group>"; };
-		01D81AD11AA7E37E006DF8B8 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Applications/MGSFragariaView/MainMenu.xib; sourceTree = "<group>"; };
+		01D39A411B19DA690072F43F /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
+		01D39A421B19DA690072F43F /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
+		01D81ACF1AA7E37E006DF8B8 /* Features.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Features.xib; sourceTree = "<group>"; };
+		01D81AD01AA7E37E006DF8B8 /* Lorem.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Lorem.html; sourceTree = "<group>"; };
+		01D81AD11AA7E37E006DF8B8 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		01D97A611C49ADE300CCEE97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGSPrefsCommonViews.xib; sourceTree = "<group>"; };
 		01D97A631C49AE1B00CCEE97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		01D97A641C49AE1B00CCEE97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Document.xib; sourceTree = "<group>"; };
@@ -603,19 +603,19 @@
 		01FBC7E91B0679520008EAF8 /* MGSMutableSubstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSMutableSubstring.h; sourceTree = "<group>"; };
 		01FBC7EA1B0679520008EAF8 /* MGSMutableSubstring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSMutableSubstring.m; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		256AC3D80F4B6AC300CF3369 /* FragariaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FragariaAppDelegate.h; path = Applications/Simple/FragariaAppDelegate.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* FragariaAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FragariaAppDelegate.m; path = Applications/Simple/FragariaAppDelegate.m; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* FragariaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FragariaAppDelegate.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* FragariaAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FragariaAppDelegate.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* Fragaria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Fragaria-Info.plist"; path = "Applications/Simple/Fragaria-Info.plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Fragaria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Fragaria-Info.plist"; sourceTree = "<group>"; };
 		AB3971C8118C1F8A00AEF388 /* MGSSyntaxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSSyntaxController.h; sourceTree = "<group>"; };
 		AB3971C9118C1F8A00AEF388 /* MGSSyntaxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSSyntaxController.m; sourceTree = "<group>"; };
 		AB3971E6118C27E700AEF388 /* SyntaxDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SyntaxDefinitions.plist; sourceTree = "<group>"; };
 		AB472BF31299BBB100202CB5 /* MGSExtraInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSExtraInterfaceController.m; sourceTree = "<group>"; };
 		AB472BF51299BBBA00202CB5 /* MGSExtraInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSExtraInterfaceController.h; sourceTree = "<group>"; };
 		AB648E2A11FB385700AEF7BD /* Fragaria Doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fragaria Doc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB648E3E11FB38E700AEF7BD /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDocument.h; path = Applications/Doc/MyDocument.h; sourceTree = "<group>"; };
-		AB648E3F11FB38E700AEF7BD /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDocument.m; path = Applications/Doc/MyDocument.m; sourceTree = "<group>"; };
+		AB648E3E11FB38E700AEF7BD /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
+		AB648E3F11FB38E700AEF7BD /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		AB69B62B118B745700903D1D /* Fragaria.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fragaria.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB69B62C118B745700903D1D /* MGSFragaria-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGSFragaria-Info.plist"; sourceTree = "<group>"; };
 		AB69B65A118B75FB00903D1D /* SMLSyntaxColouring.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SMLSyntaxColouring.m; sourceTree = "<group>"; tabWidth = 4; };
@@ -635,9 +635,9 @@
 		ABF28AEF14C075D400ECAD48 /* NSScanner+Fragaria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+Fragaria.h"; sourceTree = "<group>"; };
 		D01A8CEB1ABE75E0003B2719 /* MGSPrefsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSPrefsViewControllerTests.m; sourceTree = "<group>"; };
 		D01F51701AAF1D35006A3A90 /* MGSFragariaViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSFragariaViewTests.m; sourceTree = "<group>"; };
-		D034C8071A997FA8003D3A41 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Applications/Simple/MainMenu.xib; sourceTree = "<group>"; };
-		D034C8091A99807F003D3A41 /* MainMenu-Document.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MainMenu-Document.xib"; path = "Applications/Doc/MainMenu-Document.xib"; sourceTree = "<group>"; };
-		D034C80A1A99807F003D3A41 /* MyDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDocument.xib; path = Applications/Doc/MyDocument.xib; sourceTree = "<group>"; };
+		D034C8071A997FA8003D3A41 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		D034C8091A99807F003D3A41 /* MainMenu-Document.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainMenu-Document.xib"; sourceTree = "<group>"; };
+		D034C80A1A99807F003D3A41 /* MyDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDocument.xib; sourceTree = "<group>"; };
 		D040AAC61AC27D98009931EE /* MGSFragariaViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSFragariaViewPrivate.h; sourceTree = "<group>"; };
 		D06653CC1AC00CCD00ACE8B0 /* MGSBoolToColourTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSBoolToColourTransformer.h; sourceTree = "<group>"; };
 		D06653CD1AC00CCD00ACE8B0 /* MGSBoolToColourTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSBoolToColourTransformer.m; sourceTree = "<group>"; };
@@ -687,8 +687,8 @@
 		D07717AF1AC25A8800B23867 /* MGSBoolToGlobalHintTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSBoolToGlobalHintTransformer.m; sourceTree = "<group>"; };
 		D07717B21AC2670500B23867 /* MGSSampleBreakpointDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSSampleBreakpointDelegate.h; path = Applications/MGSFragariaViewModern/MGSSampleBreakpointDelegate.h; sourceTree = SOURCE_ROOT; };
 		D07717B31AC2670500B23867 /* MGSSampleBreakpointDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSSampleBreakpointDelegate.m; path = Applications/MGSFragariaViewModern/MGSSampleBreakpointDelegate.m; sourceTree = SOURCE_ROOT; };
-		D08359D81A9F0446001B7B50 /* FeaturesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeaturesWindowController.h; path = Applications/MGSFragariaView/FeaturesWindowController.h; sourceTree = "<group>"; };
-		D08359D91A9F0446001B7B50 /* FeaturesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeaturesWindowController.m; path = Applications/MGSFragariaView/FeaturesWindowController.m; sourceTree = "<group>"; };
+		D08359D81A9F0446001B7B50 /* FeaturesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeaturesWindowController.h; sourceTree = "<group>"; };
+		D08359D91A9F0446001B7B50 /* FeaturesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeaturesWindowController.m; sourceTree = "<group>"; };
 		D0AB50EF1A91CDC200A6DF58 /* SMLSyntaxErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLSyntaxErrorTests.m; sourceTree = "<group>"; };
 		D0C13BB91ABD12A400E191A9 /* MGSColourSchemeSaveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSColourSchemeSaveController.h; sourceTree = "<group>"; };
 		D0C13BBA1ABD12A400E191A9 /* MGSColourSchemeSaveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSColourSchemeSaveController.m; sourceTree = "<group>"; };
@@ -696,13 +696,13 @@
 		D0C145C21A85E1FD00DDE90A /* SMLTextView+MGSDragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMLTextView+MGSDragging.h"; sourceTree = "<group>"; };
 		D0C145C31A85E1FD00DDE90A /* SMLTextView+MGSDragging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMLTextView+MGSDragging.m"; sourceTree = "<group>"; };
 		D0C1464C1A87196200DDE90A /* Fragaria Complex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fragaria Complex.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0C1464F1A87196200DDE90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Applications/MGSFragariaView/Info.plist; sourceTree = "<group>"; };
-		D0C146501A87196200DDE90A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Applications/MGSFragariaView/AppDelegate.h; sourceTree = "<group>"; };
-		D0C146511A87196200DDE90A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Applications/MGSFragariaView/AppDelegate.m; sourceTree = "<group>"; };
-		D0C146531A87196200DDE90A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Applications/MGSFragariaView/main.m; sourceTree = "<group>"; };
+		D0C1464F1A87196200DDE90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C146501A87196200DDE90A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "../../../../../../../../Documents/Sviluppo C/Fragaria/Applications/MGSFragariaView/AppDelegate.h"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0C146511A87196200DDE90A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D0C146531A87196200DDE90A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0C146731A871A0B00DDE90A /* MGSFragariaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSFragariaView.h; sourceTree = "<group>"; };
 		D0C146741A871A0B00DDE90A /* MGSFragariaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSFragariaView.m; sourceTree = "<group>"; };
-		D0E520F21A88E577005CB80B /* Fragaria_Document-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Fragaria_Document-Info.plist"; path = "Applications/Doc/Fragaria_Document-Info.plist"; sourceTree = "<group>"; };
+		D0E520F21A88E577005CB80B /* Fragaria_Document-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Fragaria_Document-Info.plist"; sourceTree = "<group>"; };
 		D0E521031A90DC02005CB80B /* MGSSyntaxErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSSyntaxErrorController.h; sourceTree = "<group>"; };
 		D0E521041A90DC02005CB80B /* MGSSyntaxErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSSyntaxErrorController.m; sourceTree = "<group>"; };
 		D0E521071A90E307005CB80B /* MGSSyntaxErrorControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSSyntaxErrorControllerTests.m; sourceTree = "<group>"; };
@@ -956,7 +956,7 @@
 				01FA8AE71C1316BE00CBC97C /* Supporting Files */,
 			);
 			name = "Swift Example";
-			path = "Applications/Fragaria Swift";
+			path = "Fragaria Swift";
 			sourceTree = "<group>";
 		};
 		01FA8AE71C1316BE00CBC97C /* Supporting Files */ = {
@@ -1059,6 +1059,7 @@
 				29B97317FDCFA39411CA2CEA /* Supporting Files */,
 			);
 			name = "Simple Example";
+			path = Simple;
 			sourceTree = "<group>";
 		};
 		AB648E2311FB37D200AEF7BD /* Document Based Example */ = {
@@ -1073,6 +1074,7 @@
 				01BB1BE81A795E58006C0056 /* Supporting Files */,
 			);
 			name = "Document Based Example";
+			path = Doc;
 			sourceTree = "<group>";
 		};
 		AB69B752118B82DF00903D1D /* Framework */ = {
@@ -1113,8 +1115,8 @@
 				01F0D6FD1C120F7D000A08B6 /* Swift Example */,
 				D0718B7D1AB553A20073493A /* MASPreferences */,
 			);
-			name = Applications;
-			sourceTree = "<group>";
+			path = Applications;
+			sourceTree = SOURCE_ROOT;
 		};
 		ABDED9B6128AB144002EE039 /* Fragaria */ = {
 			isa = PBXGroup;
@@ -1190,7 +1192,7 @@
 				D0718B821AB553A20073493A /* MASPreferencesWindowController.m */,
 			);
 			name = MASPreferences;
-			path = Applications/MGSFragariaViewModern/MASPreferences;
+			path = Applications/MASPreferences;
 			sourceTree = SOURCE_ROOT;
 		};
 		D0718BA41AB7062A0073493A /* User Interface */ = {
@@ -1226,6 +1228,7 @@
 				D0E521011A90B8B7005CB80B /* Supporting Files */,
 			);
 			name = "Complex Example";
+			path = MGSFragariaView;
 			sourceTree = "<group>";
 		};
 		D0E521011A90B8B7005CB80B /* Supporting Files */ = {
@@ -1486,7 +1489,7 @@
 			attributes = {
 				CLASSPREFIX = MGS;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					01F0D6FB1C120F7D000A08B6 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -1575,8 +1578,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0105F3E31A8681430045BDD3 /* SMLSyntaxColouring.m in Resources */,
-				D034C8081A997FA8003D3A41 /* MainMenu.xib in Resources */,
+				01F708BA1F72ACE000000F1E /* SMLSyntaxColouring.m in Resources */,
+				01F708BB1F72AD0000000F1E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1997,12 +2000,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2249,12 +2258,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2288,12 +2303,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
