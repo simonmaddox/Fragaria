@@ -128,6 +128,20 @@ static unichar ClosingBraceForOpeningBrace(unichar c)
 	return self.layoutManager.showsInvisibleCharacters;
 }
 
+- (void)clearInvisibleCharacterSubstitutes
+{
+    [self.layoutManager clearInvisibleCharacterSubstitutes];
+}
+
+- (void)removeSubstituteForInvisibleCharacter:(unichar)character
+{
+    [self.layoutManager removeSubstituteForInvisibleCharacter:character];
+}
+
+- (void)addSubstitute:(NSString * _Nonnull)substitute forInvisibleCharacter:(unichar)character
+{
+    [self.layoutManager addSubstitute:substitute forInvisibleCharacter:character];
+}
 
 /*
  * @property lineSpacing

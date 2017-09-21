@@ -310,6 +310,20 @@
 /** Specifies the colour to render invisible characters in the text view.*/
 @property (nonatomic, assign, nonnull) NSColor *textInvisibleCharactersColour;
 
+/**
+ *  Clears the current substitutes for invisible characters
+ **/
+- (void)clearInvisibleCharacterSubstitutes;
+
+/**
+ *  Remove the substitute for invisible character `character`
+ **/
+- (void)removeSubstituteForInvisibleCharacter:(unichar)character;
+
+/**
+ *  Add a substitute `substitute` for invisible character `character`
+ **/
+- (void)addSubstitute:(NSString * _Nonnull)substitute forInvisibleCharacter:(unichar)character;
 
 #pragma mark - Configuring Text Appearance
 /// @name Configuring Text Appearance

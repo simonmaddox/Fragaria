@@ -794,6 +794,20 @@
 	return self.textView.textInvisibleCharactersColour;
 }
 
+- (void)clearInvisibleCharacterSubstitutes
+{
+    [self.textView clearInvisibleCharacterSubstitutes];
+}
+
+- (void)removeSubstituteForInvisibleCharacter:(unichar)character
+{
+    [self.textView removeSubstituteForInvisibleCharacter:character];
+}
+
+- (void)addSubstitute:(NSString * _Nonnull)substitute forInvisibleCharacter:(unichar)character
+{
+    [self.textView addSubstitute:substitute forInvisibleCharacter:character];
+}
 
 #pragma mark - Configuring Text Appearance
 
