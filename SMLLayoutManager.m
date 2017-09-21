@@ -29,13 +29,6 @@ typedef NSInteger NSUnderlineStyle;
 #endif
 
 
-typedef enum : NSUInteger {
-    kTabLine = 0,
-    kSpaceLine = 1,
-    kNewLineLine = 2
-} MGSLineCacheIndex;
-
-
 #define kSMLSquiggleAmplitude (3.0)
 #define kSMLSquigglePeriod    (6.0)
 #define kSMLSquigglePhase     (-1.5)
@@ -53,7 +46,8 @@ static CGFloat SquiggleFunction(CGFloat x) {
 
 
 @implementation SMLLayoutManager {
-    NSMutableArray *lineRefs;
+    NSMutableDictionary *invisibleCharacterSubstitutes;
+    NSMutableDictionary *lineRefCacheCharactersSubstitute;
 }
 
 
@@ -71,7 +65,14 @@ static CGFloat SquiggleFunction(CGFloat x) {
 	if (self) {
         _invisibleCharactersFont = [NSFont fontWithName:@"Menlo" size:11];
         _invisibleCharactersColour = [NSColor orangeColor];
-        
+
+    	// Default invisible character substitutes
+    	invisibleCharacterSubstitutes = [NSMutableDictionary dictionary];
+    	invisibleCharacterSubstitutes[@('\t')] = @"\u21E2";
+    	invisibleCharacterSubstitutes[@('\r')] = @"\u00B6";
+    	invisibleCharacterSubstitutes[@('\n')] = @"\u00B6";
+    	invisibleCharacterSubstitutes[@(' ')] = @"\u22C5";
+
         [self resetAttributesAndGlyphs];
         
 		[self setAllowsNonContiguousLayout:YES]; // Setting this to YES sometimes causes "an extra toolbar" and other graphical glitches to sometimes appear in the text view when one sets a temporary attribute, reported as ID #5832329 to Apple
@@ -108,18 +109,11 @@ static CGFloat SquiggleFunction(CGFloat x) {
         // we may not have any glyphs generated at this stage
 		for (NSInteger idx = glyphRange.location; idx < lengthToRedraw; idx++) {
 			unichar characterToCheck = [completeString characterAtIndex:idx];
-            NSUInteger lineRefIndex = 0;
-            
-			if (characterToCheck == '\t') {
-                lineRefIndex = kTabLine;
-            } else if (characterToCheck == ' ') {
-                lineRefIndex = kSpaceLine;
-			} else if (characterToCheck == '\n' || characterToCheck == '\r') {
-                lineRefIndex = kNewLineLine;
-			} else {
-                continue;
-            }
-            
+
+    	    CTLineRef line = (__bridge CTLineRef)lineRefCacheCharactersSubstitute[@(characterToCheck)];
+    	    if (line == nil)
+    	    	continue;
+
             // http://lists.apple.com/archives/cocoa-dev/2012/Sep/msg00531.html
             //
             // Draw profiling indicated that the CoreText approach on 10.8 is an order of magnitude
@@ -127,10 +121,7 @@ static CGFloat SquiggleFunction(CGFloat x) {
         
             pointToDrawAt = [self locationForGlyphAtIndex:idx];
             glyphFragment = [self lineFragmentRectForGlyphAtIndex:idx effectiveRange:NULL];
-            
-            // get our text line object
-            CTLineRef line = (__bridge CTLineRef)[lineRefs objectAtIndex:lineRefIndex];
-            
+
             pointToDrawAt.x += glyphFragment.origin.x;
             
             /* Some control glyphs have zero size (newlines), and if they are
@@ -283,48 +274,65 @@ static CGFloat SquiggleFunction(CGFloat x) {
     [bp stroke];
 }
 
+#pragma mark - Invisible character
+
+/**
+ *  -clearInvisibleCharacterSubstitutes
+ **/
+- (void)clearInvisibleCharacterSubstitutes
+{
+    [invisibleCharacterSubstitutes removeAllObjects];
+    [self resetAttributesAndGlyphs];
+    [[self firstTextView] setNeedsDisplay:YES];
+}
+
+/**
+ *  -removeSubstituteForInvisibleCharacter:
+ **/
+- (void)removeSubstituteForInvisibleCharacter:(unichar)character
+{
+    [invisibleCharacterSubstitutes removeObjectForKey:@(character)];
+    [self resetAttributesAndGlyphs];
+    [[self firstTextView] setNeedsDisplay:YES];
+}
+
+/**
+ *  -addSubstitute:forInvisibleCharacter:
+ **/
+- (void)addSubstitute:(NSString*)substitute forInvisibleCharacter:(unichar)character
+{
+    invisibleCharacterSubstitutes[@(character)] = substitute;
+    [self resetAttributesAndGlyphs];
+    [[self firstTextView] setNeedsDisplay:YES];
+}
 
 #pragma mark - Class extension
 
+/*
+ * - _addSubstitute:forCharacter:
+ */
+- (void)_addLineRefSubstitute:(NSString*)substitute forCharacter:(unichar)character
+{
+    NSDictionary *defAttributes;
+    // assemble our default attributes
+    defAttributes = @{NSFontAttributeName: self.invisibleCharactersFont,
+      NSForegroundColorAttributeName: self.invisibleCharactersColour};
+
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:substitute attributes:defAttributes];
+    CTLineRef textLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)attrString);
+    lineRefCacheCharactersSubstitute[@(character)] = (__bridge id)textLine;
+    CFRelease(textLine);
+}
 
 /*
  * - resetAttributesAndGlyphs
  */
 - (void)resetAttributesAndGlyphs
 {
-    NSDictionary *defAttributes;
-    NSString *tabCharacter;
-    NSString *newLineCharacter;
-    NSString *spaceCharacter;
-    
-    // assemble our default attributes
-    defAttributes = @{NSFontAttributeName: self.invisibleCharactersFont,
-      NSForegroundColorAttributeName: self.invisibleCharactersColour};
-
-    // define substitute characters for whitespace chars
-    tabCharacter = @"\u21E2";
-    newLineCharacter = @"\u00B6";
-    spaceCharacter = @"\u22C5";
-    
-    // all CFTypes can be added to NS collections
-    // http://www.mikeash.com/pyblog/friday-qa-2010-01-22-toll-free-bridging-internals.html
-    lineRefs = [NSMutableArray arrayWithCapacity:kNewLineLine+1];
-    
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:tabCharacter attributes:defAttributes];
-    CTLineRef textLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)attrString);
-    [lineRefs addObject:(__bridge id)textLine]; // kTabLine
-    CFRelease(textLine);
-    
-    attrString = [[NSAttributedString alloc] initWithString:spaceCharacter attributes:defAttributes];
-    textLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)attrString);
-    [lineRefs addObject:(__bridge id)textLine]; // kSpaceLine
-    CFRelease(textLine);
-    
-    attrString = [[NSAttributedString alloc] initWithString:newLineCharacter attributes:defAttributes];
-    textLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)attrString);
-    [lineRefs addObject:(__bridge id)textLine]; // kNewLineLine
-    CFRelease(textLine);
+    lineRefCacheCharactersSubstitute = [NSMutableDictionary dictionary];
+    [invisibleCharacterSubstitutes enumerateKeysAndObjectsUsingBlock:^(NSNumber* key, NSString* obj, BOOL* stop) {
+    	[self _addLineRefSubstitute:obj forCharacter:key.unsignedShortValue];
+    }];
 }
-
 
 @end

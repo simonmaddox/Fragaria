@@ -57,5 +57,19 @@ enum {
  **/
 @property BOOL showsInvisibleCharacters;
 
+/**
+ *  Clears the current substitutes for invisible characters
+ **/
+- (void)clearInvisibleCharacterSubstitutes;
+
+/**
+ *  Remove the substitute for invisible character `character`
+ **/
+- (void)removeSubstituteForInvisibleCharacter:(unichar)character;
+
+/**
+ *  Add a substitute `substitute` for invisible character `character`
+ **/
+- (void)addSubstitute:(NSString*)substitute forInvisibleCharacter:(unichar)character;
 
 @end
