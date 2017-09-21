@@ -1395,6 +1395,7 @@
 				010870A51C99E25800C335DA /* Copy Colour Schemes */,
 				AB69B628118B745700903D1D /* Sources */,
 				AB69B629118B745700903D1D /* Frameworks */,
+				0158ADAA1F74527D00EC4DCB /* Write Version */,
 			);
 			buildRules = (
 			);
@@ -1613,6 +1614,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0158ADAA1F74527D00EC4DCB /* Write Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Write Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "which -s git\nif [ $? -eq 0 ]; then\n  BUILDN=$(git describe --always --tags --long)\n  VERN=$(git describe --always --tags | sed 's/release-//');\nelse\n  echo fallback! git not found\n  BUILDN=1\n  VERN=2.00000000.0;\nfi\necho build $BUILDN , version $VERN\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILDN\" \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VERN\" \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\n";
+		};
 		D0E520F11A88DC81005CB80B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
