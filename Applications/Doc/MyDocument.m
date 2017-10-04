@@ -124,4 +124,19 @@
 }
 
 
+#pragma mark - Actions
+
+
+- (IBAction)copyWithHighlighting:(id)sender
+{
+    NSAttributedString *tmp = [fragaria attributedStringWithTemporaryAttributesApplied];
+    NSAttributedString *sel = [tmp attributedSubstringFromRange:fragaria.textView.selectedRange];
+    NSData *data = [sel RTFFromRange:NSMakeRange(0, sel.length) documentAttributes:@{}];
+    
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb clearContents];
+    [pb setData:data forType:NSPasteboardTypeRTF];
+}
+
+
 @end
