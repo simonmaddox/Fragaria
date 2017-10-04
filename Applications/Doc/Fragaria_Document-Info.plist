@@ -17,6 +17,10 @@
 			<string>Text file</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>MyDocument</string>
 		</dict>
