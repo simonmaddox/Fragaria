@@ -184,7 +184,7 @@ static CGFloat SquiggleFunction(CGFloat x) {
 		NSRange range = NSMakeRange(0, 0);
 		NSDictionary *tempAttributes = [self temporaryAttributesAtCharacterIndex:idx effectiveRange:&range];
 		if ([tempAttributes count] != 0) {
-			[attributedString setAttributes:tempAttributes range:range];
+			[attributedString addAttributes:tempAttributes range:range];
 		}
 		NSInteger rangeLength = range.length;
 		if (rangeLength != 0) {
