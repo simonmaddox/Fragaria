@@ -37,11 +37,14 @@
         action == @selector(detab:) ||
         action == @selector(capitalizeWord:) ||
         action == @selector(uppercaseCharacters:) ||
-        action == @selector(lowercaseCharacters:)
+        action == @selector(lowercaseCharacters:) ||
+        action == @selector(copyWithHighlighting:)
         ) {
         if (([self selectedRange].length < 1) || (!self.editable)) {
             enableItem = NO;
         }
+    } else if (action == @selector(copyWithHighlighting:)) {
+        enableItem &= [self selectedRange].length > 0;
     } else if (action == @selector(shiftLeft:) || action == @selector(shiftRight:)) {
         if (!self.editable)
             enableItem = NO;
@@ -633,6 +636,22 @@
             range = [string rangeOfCharacterFromSet:newlines options:0 range:range];
         }
     }];
+}
+
+
+#pragma mark -
+#pragma mark Copy / Paste
+
+
+- (IBAction)copyWithHighlighting:(id)sender
+{
+    NSAttributedString *tmp = [self attributedStringWithTemporaryAttributesApplied];
+    NSAttributedString *sel = [tmp attributedSubstringFromRange:self.selectedRange];
+    NSData *data = [sel RTFFromRange:NSMakeRange(0, sel.length) documentAttributes:@{}];
+    
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb clearContents];
+    [pb setData:data forType:NSPasteboardTypeRTF];
 }
 
 
