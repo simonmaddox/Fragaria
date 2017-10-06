@@ -135,4 +135,10 @@
 - (IBAction)transpose:(id)sender;
 
 
+/** Copy into the general pasteboard the selected area of text, included
+ *  the syntax coloring attributes.
+ *  @param sender The sender of the action. */
+- (IBAction)copyWithHighlighting:(id)sender;
+
+
 @end
