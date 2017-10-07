@@ -72,6 +72,18 @@
 - (NSString *)syntaxDefinitionNameWithExtension:(NSString *)extension;
 
 /**
+ *  Return the name of a syntax definition for the given UTI type.
+ *  @param extension The UTI type for which to return a syntax definition name.
+ **/
+- (NSDictionary *)syntaxDefinitionWithUTI:(NSString *)uti;
+
+/**
+ *  Return the name of a syntax definition for the given UTI type.
+ *  @param extension The UTI type for which to return a syntax definition name.
+ **/
+- (NSString *)syntaxDefinitionNameWithUTI:(NSString *)uti;
+
+/**
  *  Attempts to guess the syntax definition from the first line of text.
  *  @param firstLine The sample text to use in order to guess the syntax definition.
  **/

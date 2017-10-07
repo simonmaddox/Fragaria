@@ -126,7 +126,7 @@ static id sharedInstance = nil;
 	NSString *name = nil;
 	NSDictionary *definition = [self syntaxDefinitionWithExtension:extension];
 	if (definition) {
-		name = [definition valueForKey:@"name"];
+		name = [definition objectForKey:@"name"];
 	}
 	
 	return name;
@@ -159,6 +159,31 @@ static id sharedInstance = nil;
 	}
 	
 	return definition;
+}
+
+
+- (NSDictionary *)syntaxDefinitionWithUTI:(NSString *)uti
+{
+    NSArray <NSString *> *exts = (__bridge NSArray *)(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
+    
+    for (NSString *ext in exts) {
+        NSDictionary *def = [self syntaxDefinitionWithExtension:ext];
+        if (def)
+            return def;
+    }
+    return nil;
+}
+
+
+- (NSString *)syntaxDefinitionNameWithUTI:(NSString *)uti
+{
+    NSString *name = nil;
+    NSDictionary *definition = [self syntaxDefinitionWithUTI:uti];
+    if (definition) {
+        name = [definition objectForKey:@"name"];
+    }
+    
+    return name;
 }
 
 
