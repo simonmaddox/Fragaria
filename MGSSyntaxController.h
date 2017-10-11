@@ -73,13 +73,13 @@
 
 /**
  *  Return the name of a syntax definition for the given UTI type.
- *  @param extension The UTI type for which to return a syntax definition name.
+ *  @param uti The UTI type for which to return a syntax definition name.
  **/
 - (NSDictionary *)syntaxDefinitionWithUTI:(NSString *)uti;
 
 /**
  *  Return the name of a syntax definition for the given UTI type.
- *  @param extension The UTI type for which to return a syntax definition name.
+ *  @param uti The UTI type for which to return a syntax definition name.
  **/
 - (NSString *)syntaxDefinitionNameWithUTI:(NSString *)uti;
 
