@@ -164,7 +164,7 @@ static id sharedInstance = nil;
 
 - (NSDictionary *)syntaxDefinitionWithUTI:(NSString *)uti
 {
-    NSArray <NSString *> *exts = (__bridge NSArray *)(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
+    NSArray <NSString *> *exts = CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
     
     for (NSString *ext in exts) {
         NSDictionary *def = [self syntaxDefinitionWithExtension:ext];
