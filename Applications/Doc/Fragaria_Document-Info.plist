@@ -8,18 +8,16 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>txt</string>
-			</array>
+			<array/>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
 			<key>CFBundleTypeName</key>
-			<string>Text file</string>
+			<string></string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>public.plain-text</string>
+				<string>public.data</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>MyDocument</string>
