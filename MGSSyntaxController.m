@@ -225,46 +225,46 @@ static id sharedInstance = nil;
  */
 - (void)insertSyntaxDefinitions
 {
-	
-	// load definitions
-	NSMutableArray *syntaxDefinitionsArray = [self loadSyntaxDefinitions];
-	
-	// add Standard and None definitions
-	NSArray *keys = [NSArray arrayWithObjects:@"name", @"file", @"extensions", nil];
-	NSDictionary *standard = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Standard", @"standard", [NSString string], nil] forKeys:keys];
-	NSDictionary *none = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"None", @"none", [NSString string], nil] forKeys:keys];
-	[syntaxDefinitionsArray insertObject:none atIndex:0];
-	[syntaxDefinitionsArray insertObject:standard atIndex:0];
-		
-	/*
-	 build a dictionary of definitions keyed by lowercase definition name
-	 */
-	self.syntaxDefinitions = [NSMutableDictionary dictionaryWithCapacity:30];
-	NSMutableArray *definitionNames = [NSMutableArray arrayWithCapacity:30];
-	
-	NSInteger idx = 0;
-	for (id item in syntaxDefinitionsArray) {
-		
-		if ([[item valueForKey:@"extensions"] isKindOfClass:[NSArray class]]) { // If extensions is an array instead of a string, i.e. an older version
-			continue;
-		}
-
-		NSString *name = [item valueForKey:@"name"];
-
-		id syntaxDefinition = [NSMutableDictionary dictionaryWithCapacity:6];
-		[syntaxDefinition setValue:name forKey:@"name"];
-		[syntaxDefinition setValue:[item valueForKey:@"file"] forKey:@"file"];
-		[syntaxDefinition setValue:[NSNumber numberWithInteger:idx] forKey:@"sortOrder"];
-		[syntaxDefinition setValue:[item valueForKey:@"extensions"] forKey:@"extensions"];
-		idx++;
-		
-		// key is lowercase name
-		[self.syntaxDefinitions setObject:syntaxDefinition forKey:[name lowercaseString]];
-		[definitionNames addObject:name];
-	}
-	
-	_syntaxDefinitionNames = [definitionNames copy];
-
+    // load definitions
+    NSMutableArray *syntaxDefinitionsArray = [self loadSyntaxDefinitions];
+    
+    // add Standard and None definitions
+    NSDictionary *standard = @{@"name": @"Standard",
+                               @"file": @"standard",
+                               @"extensions": @""};
+    NSDictionary *none = @{@"name": @"None",
+                           @"file": @"none",
+                           @"extensions": @"txt"};
+    [syntaxDefinitionsArray insertObject:none atIndex:0];
+    [syntaxDefinitionsArray insertObject:standard atIndex:0];
+    
+    //build a dictionary of definitions keyed by lowercase definition name
+    self.syntaxDefinitions = [NSMutableDictionary dictionaryWithCapacity:30];
+    NSMutableArray *definitionNames = [NSMutableArray arrayWithCapacity:30];
+    
+    NSInteger idx = 0;
+    for (id item in syntaxDefinitionsArray) {
+        
+        if ([[item objectForKey:@"extensions"] isKindOfClass:[NSArray class]]) {
+            // If extensions is an array instead of a string, i.e. an older version
+            continue;
+        }
+        
+        NSString *name = [item objectForKey:@"name"];
+        
+        id syntaxDefinition = [NSMutableDictionary dictionaryWithCapacity:6];
+        [syntaxDefinition setObject:name forKey:@"name"];
+        [syntaxDefinition setObject:[item objectForKey:@"file"] forKey:@"file"];
+        [syntaxDefinition setObject:[NSNumber numberWithInteger:idx] forKey:@"sortOrder"];
+        [syntaxDefinition setObject:[item objectForKey:@"extensions"] forKey:@"extensions"];
+        idx++;
+        
+        // key is lowercase name
+        [self.syntaxDefinitions setObject:syntaxDefinition forKey:[name lowercaseString]];
+        [definitionNames addObject:name];
+    }
+    
+    _syntaxDefinitionNames = [definitionNames copy];
 }
 
 
