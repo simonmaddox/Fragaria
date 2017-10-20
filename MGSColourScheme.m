@@ -24,6 +24,7 @@
 
 @end
 
+
 @implementation MGSColourScheme
 
 
@@ -35,11 +36,12 @@
  */
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 {
-    if ((self = [self init]))
-    {
-        [self setDefaults];
-        self.dictionaryRepresentation = dictionary;
-    }
+    self = [super init];
+    
+    NSMutableDictionary *tmp = [[[self class] defaultValues] mutableCopy];
+    NSDictionary *safe = [dictionary dictionaryWithValuesForKeys:[tmp allKeys]];
+    [tmp addEntriesFromDictionary:safe];
+    self.dictionaryRepresentation = tmp;
 
     return self;
 }
@@ -52,7 +54,6 @@
 {
     if ((self = [self init]))
     {
-        [self setDefaults];
         [self propertiesLoadFromFile:file];
     }
 
@@ -65,12 +66,7 @@
  */
 - (instancetype)init
 {
-	if ((self = [super init]))
-	{
-		[self setDefaults];
-	}
-	
-	return self;
+	return [self initWithDictionary:@{}];
 }
 
 
@@ -198,7 +194,6 @@
 	NSAssert(fileContents, @"Error reading file %@", file);
 
     self.propertyListRepresentation = fileContents;
-    self.sourceFile = file;
 }
 
 
@@ -217,44 +212,30 @@
 
 
 /*
- * - setDefaults
+ * - defaultValues
  */
-- (void)setDefaults
++ (NSDictionary *)defaultValues
 {
+    NSMutableDictionary *res;
+
+    [res setObject:NSLocalizedStringFromTableInBundle(
+            @"Custom Settings", nil, [NSBundle bundleForClass:[self class]],
+            @"Name for Custom Settings scheme.")
+        forKey:@"displayName"];
+    
     // Use the built-in defaults instead of reinventing wheels.
     NSDictionary *defaults = [MGSFragariaView defaultsDictionary];
-
-	self.loadedFromBundle = NO;
-	
-    self.displayName = NSLocalizedStringFromTableInBundle(@"Custom Settings", nil, [NSBundle bundleForClass:[self class]],  @"Name for Custom Settings scheme.");
-
-    self.textColor = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsTextColor]];
-    self.backgroundColor = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsBackgroundColor]];
-    self.defaultSyntaxErrorHighlightingColour = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsDefaultErrorHighlightingColor]];
-
-	self.textInvisibleCharactersColour = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsTextInvisibleCharactersColour]];
-	self.currentLineHighlightColour = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsCurrentLineHighlightColour]];
-	self.insertionPointColor = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsInsertionPointColor]];
-
-    self.colourForAttributes = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForAttributes]];
-    self.colourForAutocomplete = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForAutocomplete]];
-    self.colourForCommands = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForCommands]];
-    self.colourForComments = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForComments]];
-    self.colourForInstructions = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForInstructions]];
-    self.colourForKeywords = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForKeywords]];
-    self.colourForNumbers = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForNumbers]];
-    self.colourForStrings = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForStrings]];
-    self.colourForVariables = [NSUnarchiver unarchiveObjectWithData:defaults[MGSFragariaDefaultsColourForVariables]];
-
-    self.coloursAttributes = [defaults[MGSFragariaDefaultsColoursAttributes] boolValue];
-    self.coloursAutocomplete = [defaults[MGSFragariaDefaultsColoursAutocomplete ] boolValue];
-    self.coloursCommands = [defaults[MGSFragariaDefaultsColoursCommands] boolValue];
-    self.coloursComments = [defaults[MGSFragariaDefaultsColoursComments] boolValue];
-    self.coloursInstructions = [defaults[MGSFragariaDefaultsColoursInstructions] boolValue];
-    self.coloursKeywords = [defaults[MGSFragariaDefaultsColoursKeywords] boolValue];
-    self.coloursNumbers = [defaults[MGSFragariaDefaultsColoursNumbers] boolValue];
-    self.coloursStrings = [defaults[MGSFragariaDefaultsColoursStrings] boolValue];
-    self.coloursVariables = [defaults[MGSFragariaDefaultsColoursVariables] boolValue];
+    
+    NSSet *mykeys = [self propertiesAll];
+    for (NSString *key in mykeys) {
+        id value = [defaults objectForKey:key];
+        if ([value isKindOfClass:[NSData class]]) {
+            value = [NSUnarchiver unarchiveObjectWithData:value];
+        }
+        [res setObject:value forKey:key];
+    }
+    
+    return [res copy];
 }
 
 

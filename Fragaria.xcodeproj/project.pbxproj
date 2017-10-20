@@ -131,6 +131,7 @@
 		0191FA7D1A881F6E0099B50D /* MGSDragOperationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0191FA7C1A881F280099B50D /* MGSDragOperationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0191FA811A8829930099B50D /* SMLTextView+MGSTextActions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0191FA7F1A8829930099B50D /* SMLTextView+MGSTextActions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0191FA821A8829930099B50D /* SMLTextView+MGSTextActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0191FA801A8829930099B50D /* SMLTextView+MGSTextActions.m */; };
+		0193C1D51F9A861000638B38 /* MGSColourSchemeOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 0193C1D31F9A861000638B38 /* MGSColourSchemeOption.m */; };
 		019B02EF1C1F4FE20026548F /* MGSFragariaRowColumnFunctionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 019B02EE1C1F4FE20026548F /* MGSFragariaRowColumnFunctionsTests.m */; };
 		019B80191A9E77330007D234 /* MGSFragariaTextViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 019B80181A9E77330007D234 /* MGSFragariaTextViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		019F56D51A9D3511009F9DCD /* SMLTextView+MGSDragging.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C145C21A85E1FD00DDE90A /* SMLTextView+MGSDragging.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -574,6 +575,8 @@
 		0191FA7C1A881F280099B50D /* MGSDragOperationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSDragOperationDelegate.h; sourceTree = "<group>"; };
 		0191FA7F1A8829930099B50D /* SMLTextView+MGSTextActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMLTextView+MGSTextActions.h"; sourceTree = "<group>"; };
 		0191FA801A8829930099B50D /* SMLTextView+MGSTextActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMLTextView+MGSTextActions.m"; sourceTree = "<group>"; };
+		0193C1D21F9A861000638B38 /* MGSColourSchemeOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSColourSchemeOption.h; sourceTree = "<group>"; };
+		0193C1D31F9A861000638B38 /* MGSColourSchemeOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGSColourSchemeOption.m; sourceTree = "<group>"; };
 		019B02EE1C1F4FE20026548F /* MGSFragariaRowColumnFunctionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSFragariaRowColumnFunctionsTests.m; sourceTree = "<group>"; };
 		019B80181A9E77330007D234 /* MGSFragariaTextViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSFragariaTextViewDelegate.h; sourceTree = "<group>"; };
 		01AC7E711AA341AA00DF7620 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1304,6 +1307,8 @@
 				D0718BAA1AB71FE00073493A /* MGSColourSchemeController.m */,
 				D0718BA51AB70BE70073493A /* MGSColourScheme.h */,
 				D0718BA61AB70BE70073493A /* MGSColourScheme.m */,
+				0193C1D21F9A861000638B38 /* MGSColourSchemeOption.h */,
+				0193C1D31F9A861000638B38 /* MGSColourSchemeOption.m */,
 				D0C13BB91ABD12A400E191A9 /* MGSColourSchemeSaveController.h */,
 				D0C13BBA1ABD12A400E191A9 /* MGSColourSchemeSaveController.m */,
 				D0C13BBD1ABD246900E191A9 /* MGSColourSchemeSave.xib */,
@@ -1701,6 +1706,7 @@
 				D07188441AB3D2220073493A /* MGSPreferencesProxyDictionary.m in Sources */,
 				D071883D1AB3CDFA0073493A /* MGSUserDefaultsController.m in Sources */,
 				0191FA821A8829930099B50D /* SMLTextView+MGSTextActions.m in Sources */,
+				0193C1D51F9A861000638B38 /* MGSColourSchemeOption.m in Sources */,
 				E3D4B2781714D89700BB2CC6 /* SMLSyntaxError.m in Sources */,
 				0132786A1A81650300D2DCA5 /* MGSSyntaxDefinition.m in Sources */,
 			);

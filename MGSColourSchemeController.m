@@ -7,7 +7,7 @@
 //
 
 #import "MGSColourSchemeController.h"
-#import "MGSColourScheme.h"
+#import "MGSColourSchemeOption.h"
 #import "MGSColourSchemeSaveController.h"
 
 #pragma mark - Constants
@@ -23,7 +23,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
 
 @property (nonatomic, strong, readwrite) NSMutableArray *colourSchemes;
 
-@property (nonatomic, strong) MGSColourScheme *currentScheme;
+@property (nonatomic, strong) MGSColourSchemeOption *currentScheme;
 @property (nonatomic, assign) BOOL currentSchemeIsCustom;
 
 @property (nonatomic, assign) BOOL ignoreObservations;
@@ -211,7 +211,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
  */
 - (void)setupObservers
 {
-    for (NSString *key in [[MGSColourScheme class] propertiesOfScheme])
+    for (NSString *key in [[MGSColourSchemeOption class] propertiesOfScheme])
     {
         if ([[self.objectController.content allKeys] containsObject:key])
         {
@@ -229,7 +229,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
  */
 - (void)teardownObservers
 {
-    for (NSString *key in [[MGSColourScheme class] propertiesOfScheme])
+    for (NSString *key in [[MGSColourSchemeOption class] propertiesOfScheme])
     {
         if ([[self.objectController.content allKeys] containsObject:key])
         {
@@ -254,7 +254,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
         [self removeObserver:self forKeyPath:@"objectController.content" context:@"objectController"];
         [self setupLate];
     }
-    else if ( !self.ignoreObservations && [[[MGSColourScheme class] propertiesOfScheme] containsObject:localContext] )
+    else if ( !self.ignoreObservations && [[[MGSColourSchemeOption class] propertiesOfScheme] containsObject:localContext] )
     {
         [self willChangeValueForKey:@"buttonSaveDeleteEnabled"];
         [self willChangeValueForKey:@"buttonSaveDeleteTitle"];
@@ -266,7 +266,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
     {
         [self willChangeValueForKey:@"buttonSaveDeleteEnabled"];
         [self willChangeValueForKey:@"buttonSaveDeleteTitle"];
-        MGSColourScheme *newScheme = [self.arrangedObjects objectAtIndex:self.selectionIndex];
+        MGSColourSchemeOption *newScheme = [self.arrangedObjects objectAtIndex:self.selectionIndex];
         if (self.currentSchemeIsCustom)
         {
             self.ignoreObservations = YES;
@@ -290,7 +290,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
  *   We're not forcing applications to store the name of a scheme, so try
  *   to determine what the current theme is based on the properties.
  */
-- (MGSColourScheme *)findMatchingSchemeForScheme:(MGSColourScheme *)scheme
+- (MGSColourSchemeOption *)findMatchingSchemeForScheme:(MGSColourSchemeOption *)scheme
 {
 	// arrangedObjects may not exist yet, so lets sort things ourselves...
     NSArray *sortedArray = [self.colourSchemes sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
@@ -302,7 +302,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
         return !( self.currentSchemeIsCustom && [self.currentScheme isEqual:obj] );
     }]];
 
-    for (MGSColourScheme *item in sortedArray)
+    for (MGSColourSchemeOption *item in sortedArray)
 	{
 		if ([scheme isEqualToScheme:item])
 		{
@@ -320,14 +320,14 @@ NSString * const KMGSColourSchemeExt = @"plist";
  *   for the instance of FragariaView, so return an instance of MGSColourScheme
  *   with these settings.
  */
-- (MGSColourScheme *)makeColourSchemeFromViewForScheme:(MGSColourScheme *)currentViewScheme
+- (MGSColourSchemeOption *)makeColourSchemeFromViewForScheme:(MGSColourSchemeOption *)currentViewScheme
 {
     if (!currentViewScheme)
     {
-        currentViewScheme = [[MGSColourScheme alloc] init];
+        currentViewScheme = [[MGSColourSchemeOption alloc] init];
     }
 
-    for (NSString *key in [[MGSColourScheme class] propertiesOfScheme])
+    for (NSString *key in [[MGSColourSchemeOption class] propertiesOfScheme])
     {
         if ([[self.objectController.content allKeys] containsObject:key])
         {
@@ -346,7 +346,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
 - (void)applyColourSchemeToView
 {
     self.ignoreObservations = YES;
-    for (NSString *key in [[MGSColourScheme class] propertiesOfScheme])
+    for (NSString *key in [[MGSColourSchemeOption class] propertiesOfScheme])
     {
         if ([[self.objectController.content allKeys] containsObject:key])
         {
@@ -369,8 +369,8 @@ NSString * const KMGSColourSchemeExt = @"plist";
  */
 - (void)findAndSetCurrentScheme
 {
-	MGSColourScheme *currentViewScheme = [self makeColourSchemeFromViewForScheme:nil];
-    MGSColourScheme *matchingScheme = [self findMatchingSchemeForScheme:currentViewScheme];
+	MGSColourSchemeOption *currentViewScheme = [self makeColourSchemeFromViewForScheme:nil];
+    MGSColourSchemeOption *matchingScheme = [self findMatchingSchemeForScheme:currentViewScheme];
 
 	if (matchingScheme)
     {
@@ -490,7 +490,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
     for (NSString *file in fileArray)
     {
         NSString *complete = [directory stringByAppendingPathComponent:file];
-        MGSColourScheme *scheme = [[MGSColourScheme alloc] initWithFile:complete];
+        MGSColourSchemeOption *scheme = [[MGSColourSchemeOption alloc] initWithFile:complete];
         scheme.loadedFromBundle = bundleFlag;
         [self.colourSchemes addObject:scheme];
     }

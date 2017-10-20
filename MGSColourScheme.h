@@ -26,7 +26,7 @@
  *  @param dictionary The dictionary representation of the plist file that
  *      defines the color scheme. Each key must map to an NSColor value
  *      (no unarchiving will be attempted). */
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
 /** Initializes a new colour scheme instance from a file.
  *  @param file The plist file which contains the colour scheme values. */
@@ -47,14 +47,6 @@
 /** Writes the object as a plist to the given file.
  *  @param file The complete path and file to write. */
 - (BOOL)propertiesSaveToFile:(NSString *)file;
-
-
-/** Indicates if this definition was loaded from a bundle. */
-@property (nonatomic, assign) BOOL loadedFromBundle;
-
-/** Indicates the complete and path and filename this instance was loaded
- *  from (if any). */
-@property (nonatomic, strong) NSString *sourceFile;
 
 
 /** An NSDictionary representation of the Colour Scheme Properties */
