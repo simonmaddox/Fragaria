@@ -14,9 +14,6 @@
 
 @interface MGSColourScheme ()
 
-@property (nonatomic, assign, readwrite) NSDictionary *dictionaryRepresentation;
-@property (nonatomic, assign, readwrite) NSDictionary *propertyListRepresentation;
-
 + (NSSet *) propertiesAll;
 + (NSSet *) propertiesOfTypeBool;
 + (NSSet *) propertiesOfTypeColor;
@@ -41,7 +38,7 @@
     NSMutableDictionary *tmp = [[[self class] defaultValues] mutableCopy];
     NSDictionary *safe = [dictionary dictionaryWithValuesForKeys:[tmp allKeys]];
     [tmp addEntriesFromDictionary:safe];
-    self.dictionaryRepresentation = tmp;
+    [self setPropertiesFromDictionary:tmp];
 
     return self;
 }
@@ -73,53 +70,17 @@
 #pragma mark - General Properties
 
 
-/*
- * @property dictionaryRepresentation
- * Publicly this is readonly, but we'll use the setter of this "representation"
- * internally in order to set the values from a dictionary.
- */
-- (void)setDictionaryRepresentation:(NSDictionary *)dictionaryRepresentation
+- (void)setPropertiesFromDictionary:(NSDictionary *)dictionaryRepresentation
 {
     [self setValuesForKeysWithDictionary:dictionaryRepresentation];
 }
+
 
 - (NSDictionary *)dictionaryRepresentation
 {
     return [self dictionaryWithValuesForKeys:[[[self class] propertiesAll] allObjects]];
 }
 
-
-/*
- * @property propertyListRepresentation
- * Publicly this is readonly, but we'll use the setter of this "representation"
- * internally in order to set the values from a property list.
- */
-- (void)setPropertyListRepresentation:(NSDictionary *)propertyListRepresentation
-{
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-	NSValueTransformer *xformer = [NSValueTransformer valueTransformerForName:@"MGSColourToPlainTextTransformer"];
-
-    for (NSString *key in [propertyListRepresentation allKeys])
-    {
-        if ([[[self class] propertiesOfTypeString] containsObject:key])
-        {
-			NSString *object = [propertyListRepresentation objectForKey:key];
-            [dictionary setObject:object forKey:key];
-        }
-        if ([[[self class] propertiesOfTypeColor] containsObject:key])
-        {
-			NSColor *object = [xformer reverseTransformedValue:[propertyListRepresentation objectForKey:key]];
-            [dictionary setObject:object forKey:key];
-        }
-        if ([[[self class] propertiesOfTypeBool] containsObject:key])
-        {
-			NSNumber *object = [propertyListRepresentation objectForKey:key];
-            [dictionary setObject:object forKey:key];
-        }
-    }
-    
-    self.dictionaryRepresentation = dictionary;
-}
 
 - (NSDictionary *)propertyListRepresentation
 {
@@ -193,7 +154,29 @@
     NSDictionary *fileContents = [NSDictionary dictionaryWithContentsOfFile:file];
 	NSAssert(fileContents, @"Error reading file %@", file);
 
-    self.propertyListRepresentation = fileContents;
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    NSValueTransformer *xformer = [NSValueTransformer valueTransformerForName:@"MGSColourToPlainTextTransformer"];
+
+    for (NSString *key in [fileContents allKeys])
+    {
+        if ([[[self class] propertiesOfTypeString] containsObject:key])
+        {
+            NSString *object = [fileContents objectForKey:key];
+            [dictionary setObject:object forKey:key];
+        }
+        if ([[[self class] propertiesOfTypeColor] containsObject:key])
+        {
+            NSColor *object = [xformer reverseTransformedValue:[fileContents objectForKey:key]];
+            [dictionary setObject:object forKey:key];
+        }
+        if ([[[self class] propertiesOfTypeBool] containsObject:key])
+        {
+            NSNumber *object = [fileContents objectForKey:key];
+            [dictionary setObject:object forKey:key];
+        }
+    }
+    
+    [self setPropertiesFromDictionary:dictionary];
 }
 
 
