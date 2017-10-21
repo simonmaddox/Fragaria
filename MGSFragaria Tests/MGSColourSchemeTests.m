@@ -47,20 +47,21 @@
  */
 - (void)test_propertiesToFile
 {
-    NSString *outputPath;
+    NSURL *tmpdir = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+    NSURL *outputPath;
 	NSString *expects1 = @"Monty Python";
     NSColor *expects2 = [NSColor purpleColor];
 
-    outputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"test_propertiesToFile.plist"];
+    outputPath = [tmpdir URLByAppendingPathComponent:@"test_propertiesToFile.plist"];
 	MGSColourScheme *scheme = [[MGSColourScheme alloc] init];
 	scheme.displayName = expects1;
     scheme.colourForComments = expects2;
 	
-	[scheme propertiesSaveToFile:outputPath];
+	[scheme writeToSchemeFileURL:outputPath];
 	
 	scheme = [[MGSColourScheme alloc] init];
 
-	[scheme propertiesLoadFromFile:outputPath];
+	[scheme loadFromSchemeFileURL:outputPath];
 	
 	XCTAssert([scheme.displayName isEqualToString:expects1]);
     XCTAssert([scheme.colourForComments mgs_isEqualToColor:expects2 transformedThrough:@"MGSColourToPlainTextTransformer"]);
@@ -128,22 +129,23 @@
  */
 - (void)test_isEqualToScheme_file
 {
-	NSString *outputPath;
+    NSURL *tmpdir = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+    NSURL *outputPath;
 	NSString *expects1 = @"Pecans and Cashews";
 	NSColor *expects2 = [NSColor purpleColor];
 	
-    outputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"test_isEqualToScheme_file.plist"];
+    outputPath = [tmpdir URLByAppendingPathComponent:@"test_isEqualToScheme_file.plist"];
     
 	MGSColourScheme *scheme = [[MGSColourScheme alloc] init];
 	scheme.displayName = expects1;
 	scheme.colourForKeywords = expects2;
 	
-	[scheme propertiesSaveToFile:outputPath];
+	[scheme writeToSchemeFileURL:outputPath];
 	
 	scheme = [[MGSColourScheme alloc] init];
-	[scheme propertiesLoadFromFile:outputPath];
+	[scheme loadFromSchemeFileURL:outputPath];
 	
-	MGSColourScheme *scheme2 = [[MGSColourScheme alloc] initWithFile:outputPath];
+	MGSColourScheme *scheme2 = [[MGSColourScheme alloc] initWithSchemeFileURL:outputPath];
 	
 	XCTAssert([scheme isEqualToScheme:scheme2]);
 }
@@ -154,14 +156,15 @@
  */
 - (void)test_make_classic_fragaria_theme
 {
-	NSString *outputPath;
+    NSURL *tmpdir = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+    NSURL *outputPath;
 	
-    outputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Classic Fragaria.plist"];
+    outputPath = [tmpdir URLByAppendingPathComponent:@"Classic Fragaria.plist"];
     
 	MGSColourScheme *scheme = [[MGSColourScheme alloc] init];
 	scheme.displayName = @"Classic Fragaria";
 
-	[scheme propertiesSaveToFile:outputPath];
+	[scheme writeToSchemeFileURL:outputPath];
 	
 	XCTAssert(YES);
 }

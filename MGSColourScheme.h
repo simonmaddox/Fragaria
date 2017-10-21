@@ -30,7 +30,7 @@
 
 /** Initializes a new colour scheme instance from a file.
  *  @param file The plist file which contains the colour scheme values. */
-- (instancetype)initWithFile:(NSString *)file;
+- (instancetype)initWithSchemeFileURL:(NSURL *)file;
 
 /** Initializes a new colour scheme instance with default properties. */
 - (instancetype)init;
@@ -42,11 +42,11 @@
 
 /** Sets its values from a plist file.
  *  @param file The complete path and file to read. */
-- (void)propertiesLoadFromFile:(NSString *)file;
+- (void)loadFromSchemeFileURL:(NSURL *)file;
 
 /** Writes the object as a plist to the given file.
  *  @param file The complete path and file to write. */
-- (BOOL)propertiesSaveToFile:(NSString *)file;
+- (BOOL)writeToSchemeFileURL:(NSURL *)file;
 
 
 /** An NSDictionary representation of the Colour Scheme Properties */

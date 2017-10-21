@@ -35,10 +35,11 @@
 {
     self = [super init];
     
-    NSMutableDictionary *tmp = [[[self class] defaultValues] mutableCopy];
-    NSDictionary *safe = [dictionary dictionaryWithValuesForKeys:[tmp allKeys]];
-    [tmp addEntriesFromDictionary:safe];
-    [self setPropertiesFromDictionary:tmp];
+    NSDictionary *defaults = [[self class] defaultValues];
+    NSMutableDictionary *tmp = [defaults mutableCopy];
+    [tmp addEntriesFromDictionary:dictionary];
+    NSDictionary *safe = [tmp dictionaryWithValuesForKeys:[defaults allKeys]];
+    [self setPropertiesFromDictionary:safe];
 
     return self;
 }
@@ -47,11 +48,11 @@
 /*
  * - initWithFile:
  */
-- (instancetype)initWithFile:(NSString *)file
+- (instancetype)initWithSchemeFileURL:(NSURL *)file
 {
     if ((self = [self init]))
     {
-        [self propertiesLoadFromFile:file];
+        [self loadFromSchemeFileURL:file];
     }
 
     return self;
@@ -91,15 +92,15 @@
     {
         if ([[[self class] propertiesOfTypeString] containsObject:key])
         {
-            [dictionary setObject:[self.dictionaryRepresentation objectForKey:key] forKey:key];
+            [dictionary setObject:[self valueForKey:key] forKey:key];
         }
         if ([[[self class] propertiesOfTypeColor] containsObject:key])
         {
-			[dictionary setObject:[xformer transformedValue:[self.dictionaryRepresentation objectForKey:key]] forKey:key];
+			[dictionary setObject:[xformer transformedValue:[self valueForKey:key]] forKey:key];
         }
         if ([[[self class] propertiesOfTypeBool] containsObject:key])
         {
-            [dictionary setObject:[self.dictionaryRepresentation objectForKey:key] forKey:key];
+            [dictionary setObject:[self valueForKey:key] forKey:key];
         }
     }
     
@@ -146,13 +147,13 @@
 /*
  * - propertiesLoadFromFile:
  */
-- (void)propertiesLoadFromFile:(NSString *)file
+- (void)loadFromSchemeFileURL:(NSURL *)file
 {
-	file = [file stringByStandardizingPath];
-	NSAssert([[NSFileManager defaultManager] fileExistsAtPath:file], @"File %@ not found!", file);
-	
-    NSDictionary *fileContents = [NSDictionary dictionaryWithContentsOfFile:file];
-	NSAssert(fileContents, @"Error reading file %@", file);
+    NSDictionary *fileContents = [NSDictionary dictionaryWithContentsOfURL:file];
+	if (!fileContents) {
+        NSLog(@"Error reading file %@", file);
+        return;
+    }
 
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     NSValueTransformer *xformer = [NSValueTransformer valueTransformerForName:@"MGSColourToPlainTextTransformer"];
@@ -183,11 +184,10 @@
 /*
  * - propertiesSaveToFile:
  */
-- (BOOL)propertiesSaveToFile:(NSString *)file
+- (BOOL)writeToSchemeFileURL:(NSURL *)file
 {
-    file = [file stringByStandardizingPath];
-	NSDictionary *props = self.propertyListRepresentation;
-	return [props writeToFile:file atomically:YES];
+	NSDictionary *props = [self propertyListRepresentation];
+	return [props writeToURL:file atomically:YES];
 }
 
 
@@ -199,7 +199,7 @@
  */
 + (NSDictionary *)defaultValues
 {
-    NSMutableDictionary *res;
+    NSMutableDictionary *res = [NSMutableDictionary dictionary];
 
     [res setObject:NSLocalizedStringFromTableInBundle(
             @"Custom Settings", nil, [NSBundle bundleForClass:[self class]],
@@ -209,7 +209,8 @@
     // Use the built-in defaults instead of reinventing wheels.
     NSDictionary *defaults = [MGSFragariaView defaultsDictionary];
     
-    NSSet *mykeys = [self propertiesAll];
+    NSMutableSet *mykeys = [[self propertiesAll] mutableCopy];
+    [mykeys removeObject:@"displayName"];
     for (NSString *key in mykeys) {
         id value = [defaults objectForKey:key];
         if ([value isKindOfClass:[NSData class]]) {

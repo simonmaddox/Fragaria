@@ -158,10 +158,10 @@ NSString * const KMGSColourSchemeExt = @"plist";
 
     if (self.currentSchemeIsCustom)
     {
-        __block NSString *path = [self applicationSupportDirectory];
-        path = [path stringByAppendingPathComponent:KMGSColourSchemesFolder];
+        NSURL *path = [self applicationSupportDirectory];
+        path = [path URLByAppendingPathComponent:KMGSColourSchemesFolder];
 
-        [[NSFileManager defaultManager] createDirectoryAtPath: path
+        [[NSFileManager defaultManager] createDirectoryAtURL: path
                                   withIntermediateDirectories:YES
                                                    attributes:nil
                                                         error:nil];
@@ -170,18 +170,18 @@ NSString * const KMGSColourSchemeExt = @"plist";
         self.saveController.schemeName = NSLocalizedStringFromTableInBundle(@"New Scheme", nil, [NSBundle bundleForClass:[self class]],  @"Default name for new schemes.");
 
         [self.saveController showSchemeNameGetter:self.parentView.window completion:^void (BOOL confirmed) {
-            if (confirmed)
-            {
-                path = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",self.saveController.fileName, KMGSColourSchemeExt]];
-                self.currentScheme.displayName = self.saveController.schemeName;
-                [self.currentScheme propertiesSaveToFile:path];
-                [self willChangeValueForKey:@"buttonSaveDeleteEnabled"];
-                [self willChangeValueForKey:@"buttonSaveDeleteTitle"];
-                self.currentSchemeIsCustom = NO;
-                [self didChangeValueForKey:@"buttonSaveDeleteEnabled"];
-                [self didChangeValueForKey:@"buttonSaveDeleteTitle"];
-
-            }
+            if (!confirmed)
+                return;
+            
+            NSString *schemefilename = [NSString stringWithFormat:@"%@.%@", self.saveController.fileName, KMGSColourSchemeExt];
+            NSURL *schemeurl = [path URLByAppendingPathComponent:schemefilename];
+            self.currentScheme.displayName = self.saveController.schemeName;
+            [self.currentScheme writeToSchemeFileURL:schemeurl];
+            [self willChangeValueForKey:@"buttonSaveDeleteEnabled"];
+            [self willChangeValueForKey:@"buttonSaveDeleteTitle"];
+            self.currentSchemeIsCustom = NO;
+            [self didChangeValueForKey:@"buttonSaveDeleteEnabled"];
+            [self didChangeValueForKey:@"buttonSaveDeleteTitle"];
         }];
     }
     else if (!self.currentScheme.loadedFromBundle)
@@ -408,40 +408,36 @@ NSString * const KMGSColourSchemeExt = @"plist";
  * - applicationSupportDirectory
  *   Get access to the user's Application Support directory, creating if needed.
  */
-- (NSString *)applicationSupportDirectory
+- (NSURL *)applicationSupportDirectory
 {
-    NSArray *URLS = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory
-                                                           inDomains:NSUserDomainMask];
-    if (URLS)
+    NSArray *URLS = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+    
+    if (!URLS)
+        return nil;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *appSup = [URLS firstObject];
+    NSURL *finalURL;
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+
+    if (infoDictionary.count != 0)
     {
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *appSup = [URLS firstObject];
-        NSURL *finalURL;
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-
-        if (infoDictionary.count != 0)
-        {
-            finalURL = [appSup URLByAppendingPathComponent:[infoDictionary objectForKey:@"CFBundleExecutable"] isDirectory:YES];
-        }
-        else
-        {
-            // Unit testing results in empty infoDictionary, so use a custom location.
-            finalURL = [appSup URLByAppendingPathComponent:@"MGSFragaria Framework Unit Tests" isDirectory:YES];
-        }
-
-        if (![fileManager changeCurrentDirectoryPath:[finalURL path]])
-        {
-            [fileManager createDirectoryAtURL:finalURL
-                  withIntermediateDirectories:YES
-                                   attributes:nil
-                                        error:nil];
-        }
-        return [finalURL path];
+        finalURL = [appSup URLByAppendingPathComponent:[infoDictionary objectForKey:@"CFBundleExecutable"] isDirectory:YES];
     }
     else
     {
-        return nil;
+        // Unit testing results in empty infoDictionary, so use a custom location.
+        finalURL = [appSup URLByAppendingPathComponent:@"MGSFragaria Framework Unit Tests" isDirectory:YES];
     }
+
+    if (![fileManager changeCurrentDirectoryPath:[finalURL path]])
+    {
+        [fileManager createDirectoryAtURL:finalURL
+              withIntermediateDirectories:YES
+                               attributes:nil
+                                    error:nil];
+    }
+    return finalURL;
 }
 
 
@@ -452,20 +448,17 @@ NSString * const KMGSColourSchemeExt = @"plist";
 - (void)loadColourSchemes
 {
     self.colourSchemes = [[NSMutableArray alloc] init];
+    
+    NSDictionary <NSURL *, NSNumber *> *searchPaths = @{
+        [[NSBundle bundleForClass:[self class]] resourceURL]: @(YES),
+        [[NSBundle mainBundle] resourceURL]: @(YES),
+        [self applicationSupportDirectory]: @(NO)
+    };
 
-    // Load schemes from this bundle
-    NSString *path = [[NSBundle bundleForClass:[self class]] bundlePath];
-    path = [path stringByAppendingPathComponent:@"Resources"];
-    [self addColourSchemesFromPath:path bundleFlag:YES];
-
-    // Load schemes from app bundle
-    path = [[NSBundle mainBundle] bundlePath];
-    path = [path stringByAppendingPathComponent:@"Resources"];
-    [self addColourSchemesFromPath:path bundleFlag:YES];
-
-    // Load schemes from application support
-    path = [self applicationSupportDirectory];
-    [self addColourSchemesFromPath:path bundleFlag:NO];
+    for (NSURL *path in searchPaths) {
+        BOOL bundleflag = [[searchPaths objectForKey:path] boolValue];
+        [self addColourSchemesFromURL:path bundleFlag:bundleflag];
+    }
 }
 
 
@@ -473,24 +466,27 @@ NSString * const KMGSColourSchemeExt = @"plist";
  * - addColourSchemesFromPath
  *   Given a directory path, load all of the plist files that are there.
  */
-- (void)addColourSchemesFromPath:(NSString *)path bundleFlag:(BOOL)bundleFlag
+- (void)addColourSchemesFromURL:(NSURL *)path bundleFlag:(BOOL)bundleFlag
 {
     // Build list of files to load.
-    NSString *directory = [path stringByAppendingPathComponent:KMGSColourSchemesFolder];
+    NSURL *directory = [path URLByAppendingPathComponent:KMGSColourSchemesFolder];
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
-    NSString *filter = [NSString stringWithFormat:@"self ENDSWITH '.%@'", KMGSColourSchemeExt];
-    NSArray *fileArray = [fileManager contentsOfDirectoryAtPath:directory error:nil];
-    fileArray = [fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:filter]];
+    NSError *e;
+    NSArray *fileArray = [fileManager contentsOfDirectoryAtURL:directory includingPropertiesForKeys:@[] options:0 error:&e];
+    if (!fileArray) {
+        NSLog(@"failed to add color schemes from %@; error %@", path, e);
+        return;
+    }
 
     // Append each file to the dictionary of colour schemes. By design,
     // subsequently loaded schemes with the same name replace existing.
     // This lets the application bundle override the framework, and lets
     // the user's Application Support override everything else.
-    for (NSString *file in fileArray)
-    {
-        NSString *complete = [directory stringByAppendingPathComponent:file];
-        MGSColourSchemeOption *scheme = [[MGSColourSchemeOption alloc] initWithFile:complete];
+    for (NSURL *file in fileArray) {
+        if (![[file pathExtension] isEqual:KMGSColourSchemeExt])
+            continue;
+        MGSColourSchemeOption *scheme = [[MGSColourSchemeOption alloc] initWithSchemeFileURL:file];
         scheme.loadedFromBundle = bundleFlag;
         [self.colourSchemes addObject:scheme];
     }
