@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, MGSColourSchemeErrorCode) {
     MGSColourSchemeWrongFileFormat = 1
 };
 
+@class MGSFragariaView;
+
 
 /**
  *  MGSColourScheme defines a colour scheme for MGSColourSchemeController.
@@ -34,6 +36,12 @@ typedef NS_ENUM(NSUInteger, MGSColourSchemeErrorCode) {
  *      defines the color scheme. Each key must map to an NSColor value
  *      (no unarchiving will be attempted). */
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+
+/** Initialize a new colour scheme with the currently selected color options
+ *  on the specified instance of MGSFragariaView.
+ *  @param fragaria The MGSFragariaView instance from which to copy the
+ *         initial settings. */
+- (instancetype)initWithFragaria:(MGSFragariaView *)fragaria displayName:(NSString *)name;
 
 /** Initializes a new colour scheme instance from a file.
  *  @param file The URL of the plist file which contains the colour scheme values.

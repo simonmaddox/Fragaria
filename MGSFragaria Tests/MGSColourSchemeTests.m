@@ -10,6 +10,8 @@
 #import <XCTest/XCTest.h>
 #import "MGSColourScheme.h"
 #import "NSColor+TransformedCompare.h"
+#import "MGSFragariaView.h"
+#import "MGSUserDefaultsUtilities.h"
 
 
 /**
@@ -104,6 +106,24 @@
     NSString *result = testInstance.displayName;
 
     XCTAssert([result isEqualToString:expects]);
+}
+
+
+- (void)test_initWithFragaria
+{
+    MGSFragariaView *fragaria = [[MGSFragariaView alloc] init];
+    NSDictionary *keys = @{
+        NSStringFromSelector(@selector(coloursComments)): @(NO),
+        NSStringFromSelector(@selector(colourForComments)): MGSTestRandomColor()
+    };
+    [fragaria setValuesForKeysWithDictionary:keys];
+    
+    MGSColourScheme *s1 = [[MGSColourScheme alloc] initWithFragaria:fragaria displayName:@"test"];
+    
+    for (NSString *key in keys) {
+        id val = [s1 valueForKey:key];
+        XCTAssert([val isEqual:[keys objectForKey:key]]);
+    }
 }
 
 

@@ -1291,9 +1291,9 @@
 				D071882B1AB3CDDC0073493A /* MGSUserDefaultsControllerTests.m */,
 				D071882C1AB3CDDC0073493A /* MGSUserDefaultsDefinitionsTests.m */,
 				D071882D1AB3CDDC0073493A /* MGSUserDefaultsTests.m */,
+				D0AB50EF1A91CDC200A6DF58 /* SMLSyntaxErrorTests.m */,
 				D071882E1AB3CDDC0073493A /* MGSUserDefaultsUtilities.h */,
 				D071882F1AB3CDDC0073493A /* MGSUserDefaultsUtilities.m */,
-				D0AB50EF1A91CDC200A6DF58 /* SMLSyntaxErrorTests.m */,
 				D0E5210F1A90E34F005CB80B /* Supporting Files */,
 			);
 			path = "MGSFragaria Tests";

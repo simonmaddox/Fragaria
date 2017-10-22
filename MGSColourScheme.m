@@ -48,6 +48,16 @@ NSString * const MGSColourSchemeErrorDomain = @"MGSColourSchemeErrorDomain";
 }
 
 
+- (instancetype)initWithFragaria:(MGSFragariaView *)fragaria displayName:(NSString *)name
+{
+    NSArray *keys = [[self class] propertiesOfScheme];
+    NSDictionary *dict = [fragaria dictionaryWithValuesForKeys:keys];
+    self = [self initWithDictionary:dict];
+    _displayName = name;
+    return self;
+}
+
+
 /*
  * - initWithFile:
  */
@@ -144,6 +154,18 @@ NSString * const MGSColourSchemeErrorDomain = @"MGSColourSchemeErrorDomain";
     }
 
     return YES;
+}
+
+
+- (BOOL)isEqual:(id)other
+{
+    if ([super isEqual:other])
+        return YES;
+    if ([other isKindOfClass:[self class]] && [self class] != [other class])
+        return [other isEqual:self];
+    if (![self isKindOfClass:[other class]])
+        return NO;
+    return [self isEqualToScheme:other];
 }
 
 

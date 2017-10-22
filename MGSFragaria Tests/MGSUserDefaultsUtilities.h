@@ -6,7 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+
+
+NSColor *MGSTestRandomColor(void);
+
 
 /**
  *  This class implements some utilities required by MGSUserDefaults tests.
