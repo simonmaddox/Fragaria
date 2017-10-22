@@ -21,6 +21,7 @@
 #import "SMLTextView+MGSTextActions.h"
 #import "SMLTextView+MGSDragging.h"
 #import "MGSSyntaxController.h"
+#import "MGSColourScheme.h"
 
 #import "NSTextStorage+Fragaria.h"
 #import "MGSMutableSubstring.h"

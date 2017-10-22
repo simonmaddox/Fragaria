@@ -152,6 +152,7 @@
 		01F01AB51F9CCE8C008E721D /* ColorScheme_WrongType1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AB21F9CCE0A008E721D /* ColorScheme_WrongType1.plist */; };
 		01F01AB61F9CCE8F008E721D /* ColorScheme_WrongType2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AB31F9CCE42008E721D /* ColorScheme_WrongType2.plist */; };
 		01F01AB71F9CCE91008E721D /* ColorScheme_WrongType3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AB41F9CCE58008E721D /* ColorScheme_WrongType3.plist */; };
+		01F01AB81F9D52B5008E721D /* MGSColourScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = D0718BA51AB70BE70073493A /* MGSColourScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01F0D6FF1C120F7D000A08B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F0D6FE1C120F7D000A08B6 /* AppDelegate.swift */; };
 		01F0D7011C120F7D000A08B6 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F0D7001C120F7D000A08B6 /* Document.swift */; };
 		01F0D7041C120F7D000A08B6 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F0D7021C120F7D000A08B6 /* Document.xib */; };
@@ -1114,6 +1115,8 @@
 		AB83887D171E94C5004408F4 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
+				D0718BA51AB70BE70073493A /* MGSColourScheme.h */,
+				D0718BA61AB70BE70073493A /* MGSColourScheme.m */,
 				ABF28AEF14C075D400ECAD48 /* NSScanner+Fragaria.h */,
 				ABF28AEE14C075D400ECAD48 /* NSScanner+Fragaria.m */,
 				01B50A7D1B07AD8C00C9A856 /* NSString+Fragaria.h */,
@@ -1328,8 +1331,6 @@
 			children = (
 				D0718BA91AB71FE00073493A /* MGSColourSchemeController.h */,
 				D0718BAA1AB71FE00073493A /* MGSColourSchemeController.m */,
-				D0718BA51AB70BE70073493A /* MGSColourScheme.h */,
-				D0718BA61AB70BE70073493A /* MGSColourScheme.m */,
 				0193C1D21F9A861000638B38 /* MGSColourSchemeOption.h */,
 				0193C1D31F9A861000638B38 /* MGSColourSchemeOption.m */,
 				D0C13BB91ABD12A400E191A9 /* MGSColourSchemeSaveController.h */,
@@ -1361,6 +1362,7 @@
 				010AACAD1B1CDFC2005D9984 /* MGSHybridUserDefaultsController.h in Headers */,
 				D071883C1AB3CDFA0073493A /* MGSUserDefaultsController.h in Headers */,
 				D0C146751A871A0B00DDE90A /* MGSFragariaView.h in Headers */,
+				01F01AB81F9D52B5008E721D /* MGSColourScheme.h in Headers */,
 				010F6D2F1AFEA19C0054F3D2 /* MGSUserDefaultsControllerProtocol.h in Headers */,
 				E373BF131718A64700D71602 /* SMLAutoCompleteDelegate.h in Headers */,
 				01A0EC4F1E6C761400818624 /* MGSMutableSubstring.h in Headers */,
