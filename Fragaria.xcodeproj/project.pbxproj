@@ -147,6 +147,11 @@
 		01D81AD31AA7E37E006DF8B8 /* Lorem.html in Resources */ = {isa = PBXBuildFile; fileRef = 01D81AD01AA7E37E006DF8B8 /* Lorem.html */; };
 		01D81AD41AA7E37E006DF8B8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D81AD11AA7E37E006DF8B8 /* MainMenu.xib */; };
 		01D97A601C49ADE300CCEE97 /* MGSPrefsCommonViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D97A621C49ADE300CCEE97 /* MGSPrefsCommonViews.xib */; };
+		01F01AB01F9CCDEC008E721D /* ColorScheme_NotAPlist.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AAF1F9CCDEC008E721D /* ColorScheme_NotAPlist.rtf */; };
+		01F01AB11F9CCDF6008E721D /* ColorScheme_WrongRootObject.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AAC1F9CCD9D008E721D /* ColorScheme_WrongRootObject.plist */; };
+		01F01AB51F9CCE8C008E721D /* ColorScheme_WrongType1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AB21F9CCE0A008E721D /* ColorScheme_WrongType1.plist */; };
+		01F01AB61F9CCE8F008E721D /* ColorScheme_WrongType2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AB31F9CCE42008E721D /* ColorScheme_WrongType2.plist */; };
+		01F01AB71F9CCE91008E721D /* ColorScheme_WrongType3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F01AB41F9CCE58008E721D /* ColorScheme_WrongType3.plist */; };
 		01F0D6FF1C120F7D000A08B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F0D6FE1C120F7D000A08B6 /* AppDelegate.swift */; };
 		01F0D7011C120F7D000A08B6 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F0D7001C120F7D000A08B6 /* Document.swift */; };
 		01F0D7041C120F7D000A08B6 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F0D7021C120F7D000A08B6 /* Document.xib */; };
@@ -595,6 +600,11 @@
 		01D97A611C49ADE300CCEE97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGSPrefsCommonViews.xib; sourceTree = "<group>"; };
 		01D97A631C49AE1B00CCEE97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		01D97A641C49AE1B00CCEE97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Document.xib; sourceTree = "<group>"; };
+		01F01AAC1F9CCD9D008E721D /* ColorScheme_WrongRootObject.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorScheme_WrongRootObject.plist; sourceTree = "<group>"; };
+		01F01AAF1F9CCDEC008E721D /* ColorScheme_NotAPlist.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ColorScheme_NotAPlist.rtf; sourceTree = "<group>"; };
+		01F01AB21F9CCE0A008E721D /* ColorScheme_WrongType1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorScheme_WrongType1.plist; sourceTree = "<group>"; };
+		01F01AB31F9CCE42008E721D /* ColorScheme_WrongType2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorScheme_WrongType2.plist; sourceTree = "<group>"; };
+		01F01AB41F9CCE58008E721D /* ColorScheme_WrongType3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorScheme_WrongType3.plist; sourceTree = "<group>"; };
 		01F0D6FC1C120F7D000A08B6 /* Fragaria Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fragaria Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F0D6FE1C120F7D000A08B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01F0D7001C120F7D000A08B6 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -949,6 +959,18 @@
 			name = "Gutter View";
 			sourceTree = "<group>";
 		};
+		01F01AAE1F9CCDA2008E721D /* TestCaseData */ = {
+			isa = PBXGroup;
+			children = (
+				01F01AAC1F9CCD9D008E721D /* ColorScheme_WrongRootObject.plist */,
+				01F01AAF1F9CCDEC008E721D /* ColorScheme_NotAPlist.rtf */,
+				01F01AB21F9CCE0A008E721D /* ColorScheme_WrongType1.plist */,
+				01F01AB31F9CCE42008E721D /* ColorScheme_WrongType2.plist */,
+				01F01AB41F9CCE58008E721D /* ColorScheme_WrongType3.plist */,
+			);
+			path = TestCaseData;
+			sourceTree = "<group>";
+		};
 		01F0D6FD1C120F7D000A08B6 /* Swift Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -1281,6 +1303,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E521101A90E34F005CB80B /* Info.plist */,
+				01F01AAE1F9CCDA2008E721D /* TestCaseData */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1613,6 +1636,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F01AB11F9CCDF6008E721D /* ColorScheme_WrongRootObject.plist in Resources */,
+				01F01AB71F9CCE91008E721D /* ColorScheme_WrongType3.plist in Resources */,
+				01F01AB51F9CCE8C008E721D /* ColorScheme_WrongType1.plist in Resources */,
+				01F01AB61F9CCE8F008E721D /* ColorScheme_WrongType2.plist in Resources */,
+				01F01AB01F9CCDEC008E721D /* ColorScheme_NotAPlist.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

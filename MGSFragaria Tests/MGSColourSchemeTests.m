@@ -57,14 +57,36 @@
 	scheme.displayName = expects1;
     scheme.colourForComments = expects2;
 	
-	[scheme writeToSchemeFileURL:outputPath];
+	XCTAssert([scheme writeToSchemeFileURL:outputPath error:nil]);
 	
 	scheme = [[MGSColourScheme alloc] init];
 
-	[scheme loadFromSchemeFileURL:outputPath];
+	XCTAssert([scheme loadFromSchemeFileURL:outputPath error:nil]);
+ 
+    [[NSFileManager defaultManager] removeItemAtURL:outputPath error:nil];
 	
 	XCTAssert([scheme.displayName isEqualToString:expects1]);
     XCTAssert([scheme.colourForComments mgs_isEqualToColor:expects2 transformedThrough:@"MGSColourToPlainTextTransformer"]);
+}
+
+
+- (void)test_corruptFiles
+{
+    NSBundle *mybundle = [NSBundle bundleForClass:[self class]];
+    NSArray <NSURL *> *testCases = @[
+        [mybundle URLForResource:@"ColorScheme_WrongRootObject" withExtension:@"plist"],
+        [mybundle URLForResource:@"ColorScheme_NotAPlist" withExtension:@"rtf"],
+        [mybundle URLForResource:@"ColorScheme_WrongType1" withExtension:@"plist"],
+        [mybundle URLForResource:@"ColorScheme_WrongType2" withExtension:@"plist"],
+        [mybundle URLForResource:@"ColorScheme_WrongType3" withExtension:@"plist"]
+    ];
+    
+    for (NSURL *url in testCases) {
+        NSError *err;
+        MGSColourScheme *test = [[MGSColourScheme alloc] initWithSchemeFileURL:url error:&err];
+        XCTAssert(err && !test, @"invalid color scheme %@ did not fail to parse", url);
+        NSLog(@"invalid file: %@; error: %@", url, err);
+    }
 }
 
 
@@ -140,12 +162,18 @@
 	scheme.displayName = expects1;
 	scheme.colourForKeywords = expects2;
 	
-	[scheme writeToSchemeFileURL:outputPath];
+    NSError *err;
+	[scheme writeToSchemeFileURL:outputPath error:&err];
+    NSLog(@"%@", err);
 	
 	scheme = [[MGSColourScheme alloc] init];
-	[scheme loadFromSchemeFileURL:outputPath];
+    err = nil;
+	[scheme loadFromSchemeFileURL:outputPath error:&err];
+    NSLog(@"%@", err);
 	
-	MGSColourScheme *scheme2 = [[MGSColourScheme alloc] initWithSchemeFileURL:outputPath];
+	MGSColourScheme *scheme2 = [[MGSColourScheme alloc] initWithSchemeFileURL:outputPath error:nil];
+ 
+    [[NSFileManager defaultManager] removeItemAtURL:outputPath error:nil];
 	
 	XCTAssert([scheme isEqualToScheme:scheme2]);
 }
@@ -164,12 +192,10 @@
 	MGSColourScheme *scheme = [[MGSColourScheme alloc] init];
 	scheme.displayName = @"Classic Fragaria";
 
-	[scheme writeToSchemeFileURL:outputPath];
+	[scheme writeToSchemeFileURL:outputPath error:nil];
 	
 	XCTAssert(YES);
 }
-
-
 
 
 @end

@@ -12,6 +12,9 @@
 #import "NSColor+TransformedCompare.h"
 
 
+NSString * const MGSColourSchemeErrorDomain = @"MGSColourSchemeErrorDomain";
+
+
 @interface MGSColourScheme ()
 
 + (NSSet *) propertiesAll;
@@ -48,12 +51,12 @@
 /*
  * - initWithFile:
  */
-- (instancetype)initWithSchemeFileURL:(NSURL *)file
+- (instancetype)initWithSchemeFileURL:(NSURL *)file error:(NSError **)err
 {
-    if ((self = [self init]))
-    {
-        [self loadFromSchemeFileURL:file];
-    }
+    self = [self init];
+    
+    if (![self loadFromSchemeFileURL:file error:err])
+        return nil;
 
     return self;
 }
@@ -147,47 +150,98 @@
 /*
  * - propertiesLoadFromFile:
  */
-- (void)loadFromSchemeFileURL:(NSURL *)file
+- (BOOL)loadFromSchemeFileURL:(NSURL *)file error:(NSError **)err
 {
-    NSDictionary *fileContents = [NSDictionary dictionaryWithContentsOfURL:file];
-	if (!fileContents) {
-        NSLog(@"Error reading file %@", file);
-        return;
-    }
-
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     NSValueTransformer *xformer = [NSValueTransformer valueTransformerForName:@"MGSColourToPlainTextTransformer"];
+    
+    NSSet *stringKeys = [[self class] propertiesOfTypeString];
+    NSSet *colorKeys = [[self class] propertiesOfTypeColor];
+    NSSet *boolKeys = [[self class] propertiesOfTypeBool];
+    
+    NSInputStream *fp = [NSInputStream inputStreamWithURL:file];
+    [fp open];
+    if (!fp) {
+        if (err)
+            *err = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadUnknownError userInfo:nil];
+        return NO;
+    }
+    
+    id fileContents = [NSPropertyListSerialization propertyListWithStream:fp options:NSPropertyListImmutable format:nil error:err];
+    if (!fileContents)
+        goto plistError;
+    [fp close];
+    
+    if (![fileContents isKindOfClass:[NSDictionary class]])
+        goto wrongFormat;
 
-    for (NSString *key in [fileContents allKeys])
-    {
-        if ([[[self class] propertiesOfTypeString] containsObject:key])
-        {
-            NSString *object = [fileContents objectForKey:key];
-            [dictionary setObject:object forKey:key];
+    for (NSString *key in fileContents) {
+        id object;
+        
+        if ([stringKeys containsObject:key]) {
+            object = [fileContents objectForKey:key];
+            if (![object isKindOfClass:[NSString class]])
+                goto wrongFormat;
+            
+        } else if ([colorKeys containsObject:key]) {
+            NSString *data = [fileContents objectForKey:key];
+            if (![data isKindOfClass:[NSString class]])
+                goto wrongFormat;
+            object = [xformer reverseTransformedValue:[fileContents objectForKey:key]];
+            if (![object isKindOfClass:[NSColor class]])
+                goto wrongFormat;
+            
+        } else if ([boolKeys containsObject:key]) {
+            object = [fileContents objectForKey:key];
+            if (![object isKindOfClass:[NSNumber class]])
+                goto wrongFormat;
+            
+        } else {
+            NSLog(@"unrecognized key %@ in colour scheme file %@", key, file);
         }
-        if ([[[self class] propertiesOfTypeColor] containsObject:key])
-        {
-            NSColor *object = [xformer reverseTransformedValue:[fileContents objectForKey:key]];
-            [dictionary setObject:object forKey:key];
-        }
-        if ([[[self class] propertiesOfTypeBool] containsObject:key])
-        {
-            NSNumber *object = [fileContents objectForKey:key];
-            [dictionary setObject:object forKey:key];
-        }
+        
+        [dictionary setObject:object forKey:key];
     }
     
     [self setPropertiesFromDictionary:dictionary];
+    return YES;
+    
+plistError:
+    if (err) {
+        if ([[*err domain] isEqual:NSCocoaErrorDomain]) {
+            if ([*err code] != NSPropertyListReadStreamError)
+                *err = [NSError errorWithDomain:MGSColourSchemeErrorDomain code:MGSColourSchemeWrongFileFormat userInfo:@{NSUnderlyingErrorKey: *err}];
+            else if ([[*err userInfo] objectForKey:NSUnderlyingErrorKey])
+                *err = [[*err userInfo] objectForKey:NSUnderlyingErrorKey];
+        }
+    }
+    return NO;
+    
+wrongFormat:
+    if (err)
+        *err = [NSError errorWithDomain:MGSColourSchemeErrorDomain code:MGSColourSchemeWrongFileFormat userInfo:@{}];
+    return NO;
 }
 
 
 /*
  * - propertiesSaveToFile:
  */
-- (BOOL)writeToSchemeFileURL:(NSURL *)file
+- (BOOL)writeToSchemeFileURL:(NSURL *)file error:(NSError **)err
 {
 	NSDictionary *props = [self propertyListRepresentation];
-	return [props writeToURL:file atomically:YES];
+    
+    NSOutputStream *fp = [NSOutputStream outputStreamWithURL:file append:NO];
+    if (!fp) {
+        if (err)
+            *err = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileWriteUnknownError userInfo:nil];
+    }
+    
+    [fp open];
+    BOOL res = [NSPropertyListSerialization writePropertyList:props toStream:fp format:NSPropertyListXMLFormat_v1_0 options:0 error:err];
+    [fp close];
+    
+    return res;
 }
 
 

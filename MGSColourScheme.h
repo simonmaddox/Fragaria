@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
+extern NSString * const MGSColourSchemeErrorDomain;
+
+typedef NS_ENUM(NSUInteger, MGSColourSchemeErrorCode) {
+    MGSColourSchemeWrongFileFormat = 1
+};
+
+
 /**
  *  MGSColourScheme defines a colour scheme for MGSColourSchemeController.
  *  @discussion Property names (except for displayName) are identical
@@ -29,8 +36,10 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
 /** Initializes a new colour scheme instance from a file.
- *  @param file The plist file which contains the colour scheme values. */
-- (instancetype)initWithSchemeFileURL:(NSURL *)file;
+ *  @param file The URL of the plist file which contains the colour scheme values.
+ *  @param err Upon return, if the initialization failed, contains an NSError object
+ *         that describes the problem. */
+- (instancetype)initWithSchemeFileURL:(NSURL *)file error:(NSError **)err;
 
 /** Initializes a new colour scheme instance with default properties. */
 - (instancetype)init;
@@ -41,12 +50,16 @@
 
 
 /** Sets its values from a plist file.
- *  @param file The complete path and file to read. */
-- (void)loadFromSchemeFileURL:(NSURL *)file;
+ *  @param file The complete path and file to read.
+ *  @param err Upon return, if the loading failed, contains an NSError object
+ *         that describes the problem. */
+- (BOOL)loadFromSchemeFileURL:(NSURL *)file error:(NSError **)err;
 
 /** Writes the object as a plist to the given file.
- *  @param file The complete path and file to write. */
-- (BOOL)writeToSchemeFileURL:(NSURL *)file;
+ *  @param file The complete path and file to write.
+ *  @param err Upon return, if the operation failed, contains an NSError object
+ *         that describes the problem. */
+- (BOOL)writeToSchemeFileURL:(NSURL *)file error:(NSError **)err;
 
 
 /** An NSDictionary representation of the Colour Scheme Properties */

@@ -176,7 +176,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
             NSString *schemefilename = [NSString stringWithFormat:@"%@.%@", self.saveController.fileName, KMGSColourSchemeExt];
             NSURL *schemeurl = [path URLByAppendingPathComponent:schemefilename];
             self.currentScheme.displayName = self.saveController.schemeName;
-            [self.currentScheme writeToSchemeFileURL:schemeurl];
+            [self.currentScheme writeToSchemeFileURL:schemeurl error:nil];
             [self willChangeValueForKey:@"buttonSaveDeleteEnabled"];
             [self willChangeValueForKey:@"buttonSaveDeleteTitle"];
             self.currentSchemeIsCustom = NO;
@@ -486,7 +486,7 @@ NSString * const KMGSColourSchemeExt = @"plist";
     for (NSURL *file in fileArray) {
         if (![[file pathExtension] isEqual:KMGSColourSchemeExt])
             continue;
-        MGSColourSchemeOption *scheme = [[MGSColourSchemeOption alloc] initWithSchemeFileURL:file];
+        MGSColourSchemeOption *scheme = [[MGSColourSchemeOption alloc] initWithSchemeFileURL:file error:nil];
         scheme.loadedFromBundle = bundleFlag;
         [self.colourSchemes addObject:scheme];
     }
