@@ -10,6 +10,7 @@
 
 
 @class SMLTextView;
+@class MGSColourScheme;
 
 @protocol SMLSyntaxColouringDelegate;
 @protocol SMLAutoCompleteDelegate;
@@ -153,6 +154,11 @@
 @property BOOL coloursMultiLineStrings;
 /** Indicates if coloring should end at end of line.*/
 @property BOOL coloursOnlyUntilEndOfLine;
+
+/** Sets all the syntax highlighting colours to the ones specified in a
+ *  colour scheme.
+ *  @param scheme The colour scheme. */
+- (void)setColoursFromScheme:(nonnull MGSColourScheme *)scheme;
 
 
 #pragma mark - Configuring Autocompletion

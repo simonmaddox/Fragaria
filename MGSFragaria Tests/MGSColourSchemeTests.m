@@ -127,6 +127,23 @@
 }
 
 
+- (void)test_setColorsFromScheme
+{
+    NSDictionary *keys = @{
+        NSStringFromSelector(@selector(coloursComments)): @(NO),
+        NSStringFromSelector(@selector(colourForComments)): MGSTestRandomColor()
+    };
+    MGSColourScheme *s1 = [[MGSColourScheme alloc] initWithDictionary:keys];
+    MGSFragariaView *fragaria = [[MGSFragariaView alloc] init];
+    [fragaria setColoursFromScheme:s1];
+    
+    for (NSString *key in keys) {
+        id val = [fragaria valueForKey:key];
+        XCTAssert([val isEqual:[keys objectForKey:key]]);
+    }
+}
+
+
 /*
  * - test_isEqualToScheme
  */

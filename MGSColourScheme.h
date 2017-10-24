@@ -83,7 +83,9 @@ typedef NS_ENUM(NSUInteger, MGSColourSchemeErrorCode) {
 /// @name Getting Information of Properties
 
 
-/** An array of all of the properties of this class that constitute a scheme. */
+/** An array of all of the properties of this class that constitute a scheme.
+ *  Intended for use with KVO. Note that the names of the properties in this
+ *  class and in MGSFragariaView are intentionally the same. */
 + (NSArray *)propertiesOfScheme;
 
 

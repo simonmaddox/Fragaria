@@ -19,6 +19,7 @@
 #import "MGSSyntaxController.h"
 #import "NSTextStorage+Fragaria.h"
 #import "NSString+Fragaria.h"
+#import "MGSColourScheme.h"
 
 #import "MGSSyntaxErrorController.h"
 #import "SMLSyntaxError.h"
@@ -248,6 +249,14 @@
 - (BOOL)coloursOnlyUntilEndOfLine
 {
     return self.textView.syntaxColouring.coloursOnlyUntilEndOfLine;
+}
+
+
+- (void)setColoursFromScheme:(MGSColourScheme *)scheme
+{
+    NSArray *keys = [MGSColourScheme propertiesOfScheme];
+    NSDictionary *colors = [scheme dictionaryWithValuesForKeys:keys];
+    [self setValuesForKeysWithDictionary:colors];
 }
 
 
