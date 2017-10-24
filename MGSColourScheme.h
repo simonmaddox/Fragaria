@@ -88,6 +88,11 @@ typedef NS_ENUM(NSUInteger, MGSColourSchemeErrorCode) {
  *  class and in MGSFragariaView are intentionally the same. */
 + (NSArray *)propertiesOfScheme;
 
+/** An array of colour schemes included with Fragaria.
+ *  @discussion A new copy of the schemes is generated for every invocation
+ *      of this method, as colour schemes are mutable. */
++ (NSArray <MGSColourScheme *> *)builtinColourSchemes;
+
 
 #pragma mark - Colour Scheme Properties
 /// @name Colour Scheme Properties

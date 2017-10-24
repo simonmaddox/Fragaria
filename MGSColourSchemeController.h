@@ -11,6 +11,10 @@
 @class MGSPreferencesController;
 
 
+extern NSString * const KMGSColourSchemesFolder;
+extern NSString * const KMGSColourSchemeExt;
+
+
 /**
  *  MGSColourSchemeController manages MGSColourScheme instances for use in
  *  UI applications. Although it's designed for use with the MGSFragariaView

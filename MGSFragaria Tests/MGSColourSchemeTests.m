@@ -235,4 +235,12 @@
 }
 
 
+- (void)test_builtinColorSchemes
+{
+    NSArray <MGSColourScheme *> *schemes = [MGSColourScheme builtinColourSchemes];
+    NSLog(@"builtins loaded are %@", schemes);
+    XCTAssert(schemes);
+}
+
+
 @end

@@ -10,6 +10,7 @@
 #import "MGSFragariaView+Definitions.h"
 #import "MGSColourToPlainTextTransformer.h"
 #import "NSColor+TransformedCompare.h"
+#import "MGSColourSchemeController.h"
 
 
 NSString * const MGSColourSchemeErrorDomain = @"MGSColourSchemeErrorDomain";
@@ -267,6 +268,15 @@ wrongFormat:
 }
 
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<(%@ *)%p displayName=\"%@\">",
+        NSStringFromClass([self class]),
+        self,
+        self.displayName];
+}
+
+
 #pragma mark - Category and Private
 
 
@@ -343,6 +353,25 @@ wrongFormat:
 + (NSArray *)propertiesOfScheme
 {
 	return [[MGSFragariaView propertyGroupTheme] allObjects];
+}
+
+
++ (NSArray <MGSColourScheme *> *)builtinColourSchemes
+{
+    NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+    NSArray <NSURL *> *paths = [myBundle URLsForResourcesWithExtension:KMGSColourSchemeExt subdirectory:KMGSColourSchemesFolder];
+    
+    NSMutableArray <MGSColourScheme *> *res = [NSMutableArray array];
+    for (NSURL *path in paths) {
+        MGSColourScheme *sch = [[MGSColourScheme alloc] initWithSchemeFileURL:path error:nil];
+        if (!sch) {
+            NSLog(@"loading of scheme %@ failed", path);
+            continue;
+        }
+        [res addObject:sch];
+    }
+    
+    return res;
 }
 
 
