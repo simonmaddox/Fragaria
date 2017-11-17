@@ -49,6 +49,10 @@ typedef NS_ENUM(NSUInteger, MGSColourSchemeErrorCode) {
  *         that describes the problem. */
 - (instancetype)initWithSchemeFileURL:(NSURL *)file error:(NSError **)err;
 
+/** Initializes a new colour scheme instance by copying another colour scheme.
+ *  @param scheme The original colour scheme to copy. */
+- (instancetype)initWithColourScheme:(MGSColourScheme *)scheme;
+
 /** Initializes a new colour scheme instance with default properties. */
 - (instancetype)init;
 

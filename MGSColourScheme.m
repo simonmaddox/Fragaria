@@ -73,6 +73,12 @@ NSString * const MGSColourSchemeErrorDomain = @"MGSColourSchemeErrorDomain";
 }
 
 
+- (instancetype)initWithColourScheme:(MGSColourScheme *)scheme
+{
+    return [self initWithDictionary:[scheme dictionaryRepresentation]];
+}
+
+
 /*
  * - init
  */
