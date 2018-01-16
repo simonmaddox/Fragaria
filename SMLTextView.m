@@ -497,7 +497,32 @@ static unichar ClosingBraceForOpeningBrace(unichar c)
             [NSBezierPath strokeRect:NSMakeRect(pageGuideX, 0, 0, bounds.size.height)];
         }
     }
+    
+    [self prefetchLayoutUnderRect:rect];
 }
+
+
+- (void)prefetchLayoutUnderRect:(NSRect)rect
+{
+    /* Workaround for crappy scrolling on 10.12+ */
+    NSUInteger topchar = [self.layoutManager
+        characterIndexForPoint:rect.origin
+        inTextContainer:self.textContainer
+        fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    NSPoint bottom = rect.origin;
+    bottom.y += rect.size.height;
+    NSUInteger btmchar = [self.layoutManager
+        characterIndexForPoint:bottom
+        inTextContainer:self.textContainer
+        fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    NSInteger size = MIN(btmchar - topchar * 2, self.string.length - btmchar);
+    if (size > 0) {
+        [self.layoutManager ensureLayoutForCharacterRange:NSMakeRange(btmchar, size)];
+    }
+}
+
 
 
 #pragma mark - Line Highlighting
