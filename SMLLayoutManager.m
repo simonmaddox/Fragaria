@@ -44,6 +44,14 @@ static CGFloat SquiggleFunction(CGFloat x) {
 }
 
 
+@interface NSLayoutManager ()
+
+- (void *)_validatedStoredUsageForTextContainerAtIndex:(NSUInteger)idx;
+- (void)_recalculateUsageForTextContainerAtIndex:(NSUInteger)idx;
+
+@end
+
+
 
 @implementation SMLLayoutManager {
     NSMutableDictionary *invisibleCharacterSubstitutes;
@@ -334,5 +342,25 @@ static CGFloat SquiggleFunction(CGFloat x) {
     	[self _addLineRefSubstitute:obj forCharacter:key.unsignedShortValue];
     }];
 }
+
+
+- (void *)_validatedStoredUsageForTextContainerAtIndex:(NSUInteger)idx
+{
+    /*
+     * Work around a bug in 10.13 where the text container usage cache
+     * is validated incorrectly, resulting in missing text view size updates
+     * in various circumstances.
+     *
+     * To work around it we just take the cache out of the equation by
+     * recalculating everyting inconditionally.
+     */
+    if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_12 &&
+        [self respondsToSelector:@selector(_recalculateUsageForTextContainerAtIndex:)]) {
+        [self _recalculateUsageForTextContainerAtIndex:idx];
+    }
+    
+    return [super _validatedStoredUsageForTextContainerAtIndex:idx];
+}
+
 
 @end
