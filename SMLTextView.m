@@ -517,7 +517,9 @@ static unichar ClosingBraceForOpeningBrace(unichar c)
         inTextContainer:self.textContainer
         fractionOfDistanceBetweenInsertionPoints:NULL];
     
-    NSInteger size = MIN(btmchar - topchar * 2, self.string.length - btmchar);
+    NSInteger size = MIN(
+        MAX((NSUInteger)100, (btmchar - topchar) * 4),
+        self.string.length - btmchar);
     if (size > 0) {
         [self.layoutManager ensureLayoutForCharacterRange:NSMakeRange(btmchar, size)];
     }
