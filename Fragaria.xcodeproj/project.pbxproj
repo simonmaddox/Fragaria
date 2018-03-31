@@ -1970,7 +1970,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Applications/Fragaria Swift/Fragaria-Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -2007,7 +2006,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielecattaneo.Fragaria-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Applications/Fragaria Swift/Fragaria-Swift-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Testing;
@@ -2044,7 +2042,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielecattaneo.Fragaria-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Applications/Fragaria Swift/Fragaria-Swift-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
