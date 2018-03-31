@@ -39,7 +39,7 @@
 	[self setSyntaxDefinition:@"Objective-C"];
 
 	// get initial text - in this case a test file from the bundle
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"SMLSyntaxColouring" ofType:@"m"];
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"example" ofType:@"txt"];
 	NSString *fileText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 	
 	// set text

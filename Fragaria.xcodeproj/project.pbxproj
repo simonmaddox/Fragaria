@@ -118,6 +118,7 @@
 		010AACAD1B1CDFC2005D9984 /* MGSHybridUserDefaultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0F353561AC1A369007B9E2E /* MGSHybridUserDefaultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		010F6D2F1AFEA19C0054F3D2 /* MGSUserDefaultsControllerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0F353541AC19E56007B9E2E /* MGSUserDefaultsControllerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		011B56D71C1DC7AB00540669 /* MGSLineNumberCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 011B56D61C1DC7AB00540669 /* MGSLineNumberCacheTests.m */; };
+		01281839206FD3E6004D2C3B /* example.txt in Resources */ = {isa = PBXBuildFile; fileRef = 01281838206FD3E5004D2C3B /* example.txt */; };
 		0132786A1A81650300D2DCA5 /* MGSSyntaxDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 013278671A81614600D2DCA5 /* MGSSyntaxDefinition.m */; };
 		013A79191AA8C715008ADFA1 /* MGSContextMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A791B1AA8C715008ADFA1 /* MGSContextMenu.xib */; };
 		0148656A1B19036900BE1DC4 /* NSObject+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = 014865681B19036900BE1DC4 /* NSObject+Fragaria.m */; };
@@ -163,7 +164,6 @@
 		01F0D7171C126E04000A08B6 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0718B801AB553A20073493A /* MASPreferencesWindow.xib */; };
 		01F336901C8C962100B5F395 /* NSSet+Fragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = 01F3368E1C8C962100B5F395 /* NSSet+Fragaria.h */; };
 		01F336911C8C962100B5F395 /* NSSet+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3368F1C8C962100B5F395 /* NSSet+Fragaria.m */; };
-		01F708BA1F72ACE000000F1E /* SMLSyntaxColouring.m in Resources */ = {isa = PBXBuildFile; fileRef = 0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */; };
 		01F708BB1F72AD0000000F1E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D034C8071A997FA8003D3A41 /* MainMenu.xib */; };
 		01FBC3831C1EADDF00837F04 /* MGSStringColumnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FBC3821C1EADDF00837F04 /* MGSStringColumnTests.m */; };
 		01FBC7EC1B0679520008EAF8 /* MGSMutableSubstring.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FBC7EA1B0679520008EAF8 /* MGSMutableSubstring.m */; };
@@ -464,7 +464,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = SMLSyntaxColouring.m; sourceTree = SOURCE_ROOT; };
 		01086F9A1C99E16E00C335DA /* actionscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actionscript.plist; sourceTree = "<group>"; };
 		01086F9B1C99E16E00C335DA /* actionscript3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actionscript3.plist; sourceTree = "<group>"; };
 		01086F9C1C99E16E00C335DA /* active4d.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = active4d.plist; sourceTree = "<group>"; };
@@ -560,6 +559,7 @@
 		01098F1B1AA7BD0900ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SMLEntab.xib; sourceTree = "<group>"; };
 		01098F1E1AA7BD0D00ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SMLDetab.xib; sourceTree = "<group>"; };
 		011B56D61C1DC7AB00540669 /* MGSLineNumberCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSLineNumberCacheTests.m; sourceTree = "<group>"; };
+		01281838206FD3E5004D2C3B /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = "<group>"; };
 		013278661A81614500D2DCA5 /* MGSSyntaxDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSSyntaxDefinition.h; sourceTree = "<group>"; };
 		013278671A81614600D2DCA5 /* MGSSyntaxDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSSyntaxDefinition.m; sourceTree = "<group>"; };
 		013A791A1AA8C715008ADFA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGSContextMenu.xib; sourceTree = "<group>"; };
@@ -1046,7 +1046,7 @@
 			children = (
 				018CFA0E1AE46B9800334011 /* main.m */,
 				8D1107310486CEB800E47090 /* Fragaria-Info.plist */,
-				0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */,
+				01281838206FD3E5004D2C3B /* example.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1609,7 +1609,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01F708BA1F72ACE000000F1E /* SMLSyntaxColouring.m in Resources */,
+				01281839206FD3E6004D2C3B /* example.txt in Resources */,
 				01F708BB1F72AD0000000F1E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
