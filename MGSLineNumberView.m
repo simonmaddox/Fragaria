@@ -749,8 +749,8 @@ typedef enum {
             [self breakpointClickedOnLine:line+1];
     } dragEndEvent:^(BOOL inside){
         if (where == MGSGutterHitTypeDecoration && inside) {
-            _selectedLineNumber = line;
-            [NSApp sendAction:_decorationActionSelector to:_decorationActionTarget from:self];
+            self->_selectedLineNumber = line;
+            [NSApp sendAction:self->_decorationActionSelector to:self->_decorationActionTarget from:self];
         }
     }];
 }
