@@ -870,7 +870,7 @@ static char kcColoursChanged;
     
     [regex enumerateMatchesInString:rangeString options:0 range:NSMakeRange(0, [rangeString length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop) {
         NSRange foundRange = [match range];
-        [self setColour:stringsColour range:NSMakeRange(foundRange.location + rangeLocation + 1, foundRange.length - 1)];
+        [self setColour:self->stringsColour range:NSMakeRange(foundRange.location + rangeLocation + 1, foundRange.length - 1)];
     }];
 }
 
@@ -895,7 +895,7 @@ static char kcColoursChanged;
         NSRange foundRange = [match range];
         if ([[self syntaxColouringGroupOfCharacterAtIndex:foundRange.location + rangeLocation] isEqual:@"strings"])
             return;
-        [self setColour:stringsColour range:NSMakeRange(foundRange.location + rangeLocation + 1, foundRange.length - 1)];
+        [self setColour:self->stringsColour range:NSMakeRange(foundRange.location + rangeLocation + 1, foundRange.length - 1)];
     }];
 }
 
@@ -1148,7 +1148,7 @@ static char kcColoursChanged;
     [regex enumerateMatchesInString:rangeString options:0 range:NSMakeRange(0, [rangeString length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop) {
         NSRange foundRange = [match range];
         if ([[self syntaxColouringGroupOfCharacterAtIndex:foundRange.location + rangeLocation] isEqual:@"strings"] || [[self syntaxColouringGroupOfCharacterAtIndex:foundRange.location + rangeLocation] isEqual:@"comments"]) return;
-        [self setColour:stringsColour range:NSMakeRange(foundRange.location + rangeLocation + 1, foundRange.length - 1)];
+        [self setColour:self->stringsColour range:NSMakeRange(foundRange.location + rangeLocation + 1, foundRange.length - 1)];
     }];
 }
 
