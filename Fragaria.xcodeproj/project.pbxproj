@@ -21,13 +21,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0105F3E31A8681430045BDD3 /* SMLSyntaxColouring.m in Resources */ = {isa = PBXBuildFile; fileRef = 0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */; };
 		01098F111AA7BCF200ED4CFD /* MGSPreferencesTextEditing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01098F131AA7BCF200ED4CFD /* MGSPreferencesTextEditing.xib */; };
 		01098F141AA7BCF800ED4CFD /* MGSPreferencesFontsAndColours.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01098F161AA7BCF800ED4CFD /* MGSPreferencesFontsAndColours.xib */; };
 		01098F171AA7BD0400ED4CFD /* SMLGoToLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01098F191AA7BD0400ED4CFD /* SMLGoToLine.xib */; };
 		01098F1A1AA7BD0900ED4CFD /* SMLEntab.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01098F1C1AA7BD0900ED4CFD /* SMLEntab.xib */; };
 		01098F1D1AA7BD0D00ED4CFD /* SMLDetab.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01098F1F1AA7BD0D00ED4CFD /* SMLDetab.xib */; };
 		011B56D71C1DC7AB00540669 /* MGSLineNumberCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 011B56D61C1DC7AB00540669 /* MGSLineNumberCacheTests.m */; };
+		0128183B206FEA3F004D2C3B /* example.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0128183A206FEA3F004D2C3B /* example.txt */; };
 		0132786A1A81650300D2DCA5 /* MGSSyntaxDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 013278671A81614600D2DCA5 /* MGSSyntaxDefinition.m */; };
 		013A79191AA8C715008ADFA1 /* MGSContextMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A791B1AA8C715008ADFA1 /* MGSContextMenu.xib */; };
 		014E7DAA1C1C8D430093ACA6 /* NSTextStorage+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E7DA81C1C8D430093ACA6 /* NSTextStorage+Fragaria.m */; };
@@ -148,13 +148,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = SMLSyntaxColouring.m; sourceTree = "<group>"; };
 		01098F121AA7BCF200ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGSPreferencesTextEditing.xib; sourceTree = "<group>"; };
 		01098F151AA7BCF800ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGSPreferencesFontsAndColours.xib; sourceTree = "<group>"; };
 		01098F181AA7BD0400ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SMLGoToLine.xib; sourceTree = "<group>"; };
 		01098F1B1AA7BD0900ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SMLEntab.xib; sourceTree = "<group>"; };
 		01098F1E1AA7BD0D00ED4CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SMLDetab.xib; sourceTree = "<group>"; };
 		011B56D61C1DC7AB00540669 /* MGSLineNumberCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSLineNumberCacheTests.m; sourceTree = "<group>"; };
+		0128183A206FEA3F004D2C3B /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = example.txt; path = Applications/Simple/example.txt; sourceTree = "<group>"; };
 		013278661A81614500D2DCA5 /* MGSSyntaxDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSSyntaxDefinition.h; sourceTree = "<group>"; };
 		013278671A81614600D2DCA5 /* MGSSyntaxDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSSyntaxDefinition.m; sourceTree = "<group>"; };
 		013A791A1AA8C715008ADFA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGSContextMenu.xib; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 			children = (
 				018CFA131AE46D1800334011 /* main.m */,
 				8D1107310486CEB800E47090 /* Fragaria-Info.plist */,
-				0105F3E11A86811C0045BDD3 /* SMLSyntaxColouring.m */,
+				0128183A206FEA3F004D2C3B /* example.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -763,7 +763,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0105F3E31A8681430045BDD3 /* SMLSyntaxColouring.m in Resources */,
+				0128183B206FEA3F004D2C3B /* example.txt in Resources */,
 				ABCA4D9E16137FC000E4849B /* Preferences.xib in Resources */,
 				D034C8081A997FA8003D3A41 /* MainMenu.xib in Resources */,
 			);
