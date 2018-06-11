@@ -227,6 +227,7 @@ NSString * const MGSColourSchemeErrorDomain = @"MGSColourSchemeErrorDomain";
             
         } else {
             NSLog(@"unrecognized key %@ in colour scheme file %@", key, file);
+            continue;
         }
         
         [dictionary setObject:object forKey:key];
