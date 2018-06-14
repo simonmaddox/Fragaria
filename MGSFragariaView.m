@@ -1273,6 +1273,18 @@
 	[self setShowsSyntaxErrors:YES];
 	
 	[self setAutoCompleteDelegate:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:NSTextDidChangeNotification object:self.textView];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)textDidChange:(NSNotification *)notification
+{
+    [self mgs_propagateValue:self.string forBinding:NSStringFromSelector(@selector(string))];
 }
 
 
