@@ -103,7 +103,7 @@
  */
 - (void)setString:(NSString *)string
 {
-	self.textView.string = string;
+    self.textView.string = string ?: @"";
     [self mgs_propagateValue:string forBinding:NSStringFromSelector(@selector(string))];
 }
 
